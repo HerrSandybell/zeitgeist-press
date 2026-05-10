@@ -27,7 +27,9 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. `config.assume_ssl = true` is present and active in `config/environments/production.rb`
   3. A CSP initializer exists in `config/initializers/` with a policy appropriate for a read-only Rails app
   4. The CSP initializer is loaded on boot without errors
-**Plans**: TBD
+**Plans**: 1 plan
+Plans:
+- [ ] 01-01-PLAN.md — Enable SSL enforcement and activate nonce-based Content Security Policy
 
 ### Phase 2: Model Test Coverage
 **Goal**: All three domain models have real Minitest tests covering validations, enums, and associations
@@ -58,6 +60,6 @@ Phases execute in numeric order: 1 → 2 → 3
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Production Security | 0/? | Not started | - |
+| 1. Production Security | 0/1 | Not started | - |
 | 2. Model Test Coverage | 0/? | Not started | - |
 | 3. First Web Page | 0/? | Not started | - |
