@@ -2,26 +2,17 @@
 
 one:
   edition: one
-  story_type: 1
-  position: 1
-  headline: MyString
-  body: MyText
-  supertitle: MyString
-  subtitle: MyString
-  author: MyString
-  quote: MyText
-  quote_origin: MyString
-  summary_ticker: MyString
+  story_type: major
+  headline: Chronicle Front Page Story
+  body: The full text of the front page story.
 
 two:
   edition: two
-  story_type: 1
-  position: 1
-  headline: MyString
-  body: MyText
-  supertitle: MyString
-  subtitle: MyString
-  author: MyString
-  quote: MyText
-  quote_origin: MyString
-  summary_ticker: MyString
+  story_type: secondary
+  headline: An Inside Story
+  body: The full text of an inside story.
+
+orphan:
+  story_type: major
+  headline: An Orphaned Story
+  body: This story has no edition yet.
