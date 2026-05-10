@@ -31,11 +31,12 @@ Each newspaper edition contains several stories slotted into a fixed front page 
 | volume | integer | |
 | issue_number | integer | |
 | attention_bar | string | optional — the bold banner across the top |
+| published | boolean | default: false |
 
 ### Story
 | Field | Type | Notes |
 |-------|------|-------|
-| edition_id | foreign key | |
+| edition_id | foreign key | optional — stories can exist without an edition |
 | story_type | enum | major, secondary, tertiary, advertisement |
 | position | integer | ordering within the edition |
 | headline | string | |
