@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "vexp": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "/home/tarek/.vscode-server/extensions/vexp.vexp-vscode-2.0.12-linux-x64/dist/mcp-server.cjs"
+      ],
+      "env": {
+        "VEXP_WORKSPACE": "/home/tarek/projects/zeitgeist-press"
+      }
+    }
+  }
+}
