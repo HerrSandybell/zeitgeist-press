@@ -22,8 +22,8 @@ Readers can browse published newspaper editions and read the stories within them
 
 ### Active
 
-- [ ] Production SSL enforced (force_ssl + assume_ssl enabled)
-- [ ] Content Security Policy defined and active in production
+- [x] Production SSL enforced (force_ssl + assume_ssl enabled) — Validated in Phase 01: production-security
+- [x] Content Security Policy defined and active in production — Validated in Phase 01: production-security
 - [ ] Newspaper model fully tested (name validation, edition association)
 - [ ] Edition model fully tested (season enum, day range validation, volume/issue presence, published flag)
 - [ ] Story model fully tested (story_type enum, optional edition, headline/body/type presence)
@@ -80,4 +80,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-05-10 after initialization*
+*Last updated: 2026-05-10 — Phase 01 complete: SSL enforcement + nonce-based CSP active in production*
