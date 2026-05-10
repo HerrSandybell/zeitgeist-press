@@ -2,18 +2,18 @@
 
 one:
   newspaper: one
-  year: 2025
-  season: spring
-  day: 45
+  year: 1
+  season: 1
+  day: 1
   volume: 1
   issue_number: 1
-  published: false
+  attention_bar: MyString
 
 two:
   newspaper: two
-  year: 2025
-  season: autumn
-  day: 12
-  volume: 2
-  issue_number: 3
-  published: true
+  year: 1
+  season: 1
+  day: 1
+  volume: 1
+  issue_number: 1
+  attention_bar: MyString
