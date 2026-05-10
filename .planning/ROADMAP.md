@@ -29,7 +29,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   4. The CSP initializer is loaded on boot without errors
 **Plans**: 1 plan
 Plans:
-- [ ] 01-01-PLAN.md — Enable SSL enforcement and activate nonce-based Content Security Policy
+- [x] 01-01-PLAN.md — Enable SSL enforcement and activate nonce-based Content Security Policy
 
 ### Phase 2: Model Test Coverage
 **Goal**: All three domain models have real Minitest tests covering validations, enums, and associations
