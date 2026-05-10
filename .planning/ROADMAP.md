@@ -42,9 +42,9 @@ Plans:
   4. `rails test` exits green with zero failures and zero errors
 **Plans**: 3 plans
 Plans:
-- [ ] 02-01-PLAN.md — Newspaper model tests (name presence, has_many editions) + meaningful newspapers.yml
-- [ ] 02-02-PLAN.md — Edition model tests (season enum, day numericality, presence, published default) + label-string editions.yml
-- [ ] 02-03-PLAN.md — Story model tests (story_type enum, optional edition, presence) + stories.yml with orphan fixture
+- [x] 02-01-PLAN.md — Newspaper model tests (name presence, has_many editions) + meaningful newspapers.yml
+- [x] 02-02-PLAN.md — Edition model tests (season enum, day numericality, presence, published default) + label-string editions.yml
+- [x] 02-03-PLAN.md — Story model tests (story_type enum, optional edition, presence) + stories.yml with orphan fixture
 
 ### Phase 3: First Web Page
 **Goal**: The app serves a real HTTP response at / listing all newspapers
