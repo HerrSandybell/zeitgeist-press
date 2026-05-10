@@ -24,9 +24,9 @@ Readers can browse published newspaper editions and read the stories within them
 
 - [x] Production SSL enforced (force_ssl + assume_ssl enabled) — Validated in Phase 01: production-security
 - [x] Content Security Policy defined and active in production — Validated in Phase 01: production-security
-- [ ] Newspaper model fully tested (name validation, edition association)
-- [ ] Edition model fully tested (season enum, day range validation, volume/issue presence, published flag)
-- [ ] Story model fully tested (story_type enum, optional edition, headline/body/type presence)
+- [x] Newspaper model fully tested (name validation, edition association) — Validated in Phase 02: model-test-coverage
+- [x] Edition model fully tested (season enum, day range validation, volume/issue presence, published flag) — Validated in Phase 02: model-test-coverage
+- [x] Story model fully tested (story_type enum, optional edition, headline/body/type presence) — Validated in Phase 02: model-test-coverage
 - [ ] Newspapers index page lists all newspapers at root (/)
 - [ ] Newspapers controller wired to root route
 
@@ -39,7 +39,7 @@ Readers can browse published newspaper editions and read the stories within them
 
 ## Context
 
-Brownfield Rails 8.1.3 / Ruby 3.3.5 app. The domain model (Newspaper → Edition → Story) is complete and seeded with rich fictional content. The app is currently unreachable via HTTP beyond the `/up` health check — root route is commented out, no domain controllers or views exist.
+Brownfield Rails 8.1.3 / Ruby 3.3.5 app. The domain model (Newspaper → Edition → Story) is complete and seeded with rich fictional content. The app is currently unreachable via HTTP beyond the `/up` health check — root route is commented out, no domain controllers or views exist. Phase 02 complete — 21 model tests (3 Newspaper, 11 Edition, 7 Story) pass with 0 failures; all three models fully covered (presence validations, enum exhaustiveness, optional associations, boundary checks).
 
 Codebase map produced 2026-05-10 via `/gsd-map-codebase`. Key findings:
 - SSL/CSP disabled in production config (security risk)
