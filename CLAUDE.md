@@ -9,7 +9,9 @@ Each newspaper edition contains several stories slotted into a fixed front page 
 ## Tech Stack
 
 - **Ruby on Rails** — backend, routing, data
-- **Hotwire Turbo Streams** — dynamic page updates without full reloads
+- **Hotwire Turbo Drive** — intercepts link clicks and form submits; replaces `<body>` without a full reload. Always on, no extra code needed.
+- **Hotwire Turbo Frames** — scopes updates to a marked region. Planned use: the "Continued on page #" story overflow overlay.
+- **Hotwire Turbo Streams** — server-pushed DOM updates (append/replace/remove) over WebSocket or form response. Planned use: edition comment section.
 - **Alpine.js** — lightweight interactivity (overlays, toggles)
 - **Semantic Tokens** — design system foundation
 - **SQLite** — database (development)
