@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  edition: one
+  story_type: 1
+  position: 1
+  headline: MyString
+  body: MyText
+  supertitle: MyString
+  subtitle: MyString
+  author: MyString
+  quote: MyText
+  quote_origin: MyString
+  summary_ticker: MyString
+
+two:
+  edition: two
+  story_type: 1
+  position: 1
+  headline: MyString
+  body: MyText
+  supertitle: MyString
+  subtitle: MyString
+  author: MyString
+  quote: MyText
+  quote_origin: MyString
+  summary_ticker: MyString
