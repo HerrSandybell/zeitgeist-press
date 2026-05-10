@@ -12,11 +12,13 @@ Rails.application.configure do
     policy.object_src  :none
     policy.script_src  :self
     policy.style_src   :self
+    policy.form_action :self
+    policy.frame_ancestors :none
   end
 
   # Generate a per-request nonce for script-src and style-src.
   # Importmap renders an inline <script type="importmap"> tag that requires
   # this nonce; Rails injects it automatically via javascript_importmap_tags.
-  config.content_security_policy_nonce_generator = ->(request) { request.session.id.to_s }
+  config.content_security_policy_nonce_generator = ->(_request) { SecureRandom.base64(16) }
   config.content_security_policy_nonce_directives = %w[script-src style-src]
 end
