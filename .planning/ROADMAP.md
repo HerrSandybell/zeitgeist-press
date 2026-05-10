@@ -40,7 +40,11 @@ Plans:
   2. `rails test test/models/edition_test.rb` passes with tests for season enum, day range (1–90), year/season/day/volume/issue_number presence, and published flag default
   3. `rails test test/models/story_test.rb` passes with tests for story_type enum, nullable edition_id, and story_type/headline/body presence
   4. `rails test` exits green with zero failures and zero errors
-**Plans**: TBD
+**Plans**: 3 plans
+Plans:
+- [ ] 02-01-PLAN.md — Newspaper model tests (name presence, has_many editions) + meaningful newspapers.yml
+- [ ] 02-02-PLAN.md — Edition model tests (season enum, day numericality, presence, published default) + label-string editions.yml
+- [ ] 02-03-PLAN.md — Story model tests (story_type enum, optional edition, presence) + stories.yml with orphan fixture
 
 ### Phase 3: First Web Page
 **Goal**: The app serves a real HTTP response at / listing all newspapers
@@ -61,5 +65,5 @@ Phases execute in numeric order: 1 → 2 → 3
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Production Security | 0/1 | Not started | - |
-| 2. Model Test Coverage | 0/? | Not started | - |
+| 2. Model Test Coverage | 0/3 | Not started | - |
 | 3. First Web Page | 0/? | Not started | - |
