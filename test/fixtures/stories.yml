@@ -63,3 +63,19 @@ secondary_one:
   story_type: secondary
   headline: Inside Edition One
   body: Secondary story for edition one.
+
+long_major:
+  edition: one
+  story_type: major
+  position: 10
+  headline: A Lengthy Dispatch on the Affairs of State
+  body: |
+    The first volley of correspondence arrived in the small hours of Osenday morning, sealed with the crimson wax of the Chancellery and bearing the unmistakable hand of the Sub-Minister himself.
+
+    Officers of the Watch were dispatched to seven separate addresses across the Municipal Quarter, each summons more peculiar than the last. By dawn, three citizens of considerable standing had been taken into protective custody and a fourth had vanished entirely.
+
+    Our correspondent witnessed the dispatch of a runner — a small, soot-faced boy of perhaps eleven years — bearing a sealed packet from the Office of the Lord Mayor toward the Hall of Inquiry. The boy refused all questions, citing the gravity of the cargo and the consequences of indiscretion.
+
+    By midday the Commissioner had convened an emergency session of the Bench, and by evening the broadsheets of three rival publications had each printed a different account of the morning's events. The truth, as is so often the case in this city, remained the property of those few who had no interest in its publication.
+
+    A statement is expected from the Office of the Lord Mayor before the close of business tomorrow. Our correspondent will be in attendance, notebook in hand and instincts on edge.
