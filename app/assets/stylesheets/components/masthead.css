@@ -57,13 +57,13 @@
 .masthead-info__location { text-align: right; }
 
 .attention-bar {
-  font-family: var(--font-headline);
+  font-family: var(--font-body);
   font-weight: bold;
   text-align: center;
   padding: 0.4rem 1rem;
   margin: 0 -1rem;
   background: var(--color-ink);
   color: var(--color-paper);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   font-size: 0.875rem;
 }
