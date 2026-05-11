@@ -1,0 +1,14 @@
+/*
+ * Page-level layout. Centres the newspaper-page block and gives it the
+ * physical-paper treatment (background, shadow). The body's padding creates
+ * the "desk" visible around the edges.
+ */
+
+.newspaper-page {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  background-color: var(--color-paper);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.30),
+    0 8px 32px rgba(0, 0, 0, 0.20);
+}
