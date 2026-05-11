@@ -72,4 +72,16 @@ class EditionTest < ActiveSupport::TestCase
     edition = Edition.new
     assert_equal false, edition.published
   end
+
+  test "edition_type is nil by default" do
+    assert_nil Edition.new.edition_type
+  end
+
+  test "price is nil by default" do
+    assert_nil Edition.new.price
+  end
+
+  test "city is nil by default" do
+    assert_nil Edition.new.city
+  end
 end

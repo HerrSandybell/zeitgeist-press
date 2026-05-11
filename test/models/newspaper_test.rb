@@ -25,4 +25,12 @@ class NewspaperTest < ActiveSupport::TestCase
     newspaper = Newspaper.new(name: "The Times & Echo")
     assert_equal "the-times-echo", newspaper.slug
   end
+
+  test "tagline is nil by default" do
+    assert_nil Newspaper.new(name: "Test").tagline
+  end
+
+  test "print_location is nil by default" do
+    assert_nil Newspaper.new(name: "Test").print_location
+  end
 end
