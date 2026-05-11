@@ -35,6 +35,7 @@
 
 [data-newspaper="pryce-of-progress"] .story--tertiary {
   grid-column: span 4;
+  align-self: start;
 }
 
 [data-newspaper="pryce-of-progress"] .story--advertisement {

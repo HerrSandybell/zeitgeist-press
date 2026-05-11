@@ -11,9 +11,9 @@ class EditionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "show renders all stories for the edition" do
+  test "show renders all non-advertisement stories" do
     get newspaper_edition_url(@newspaper, @edition)
-    @edition.stories.each do |story|
+    @edition.stories.where.not(story_type: :advertisement).each do |story|
       assert_includes response.body, story.headline,
         "Expected response to include headline #{story.headline.inspect}"
     end
@@ -32,5 +32,15 @@ class EditionsControllerTest < ActionDispatch::IntegrationTest
     assert positions.all?, "Expected all four headlines to appear in response body"
     assert_equal positions, positions.sort,
       "Expected story_type order: major < secondary < tertiary < advertisement"
+  end
+
+  test "show caps advertisements at four" do
+    get newspaper_edition_url(@newspaper, @edition)
+
+    assert_includes response.body, stories(:ad_one).headline
+    assert_includes response.body, stories(:ad_two).headline
+    assert_includes response.body, stories(:ad_three).headline
+    assert_includes response.body, stories(:ad_four).headline
+    assert_not_includes response.body, stories(:ad_five).headline
   end
 end
