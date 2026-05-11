@@ -23,7 +23,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body data-newspaper="<%= @edition&.newspaper&.slug %>">
     <%= yield %>
   </body>
 </html>
