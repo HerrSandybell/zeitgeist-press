@@ -6,4 +6,8 @@ class Edition < ApplicationRecord
 
   validates :year, :season, :day, :volume, :issue_number, presence: true
   validates :day, numericality: { in: 1..90 }
+
+  def label
+    "#{day.ordinalize} of #{season.capitalize}, #{year}"
+  end
 end

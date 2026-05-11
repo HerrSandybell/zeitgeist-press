@@ -1,5 +1,5 @@
 class NewspapersController < ApplicationController
   def index
-    @newspapers = Newspaper.all
+    @newspapers = Newspaper.includes(:editions).all
   end
 end

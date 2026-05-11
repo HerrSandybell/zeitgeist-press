@@ -1,5 +1,10 @@
 <h1>Newspapers</h1>
 
-<% @newspapers.each do |newspaper| %>
-  <p><%= newspaper.name %></p>
-<% end %>
+  <% @newspapers.each do |newspaper| %>
+    <h2><%= newspaper.name %></h2>
+    <ul>
+      <% newspaper.editions.each do |edition| %>
+        <li><%= edition.label %></li>
+      <% end %>
+    </ul>
+  <% end %>
