@@ -30,6 +30,13 @@
   font-style: italic;
 }
 
+.masthead-title em::before,
+.masthead-title em::after {
+  content: " \2726 ";
+  font-style: normal;
+  letter-spacing: 0;
+}
+
 .masthead-tagline {
   font-family: var(--font-body);
   font-style: italic;

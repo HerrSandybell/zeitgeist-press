@@ -8,7 +8,7 @@ body[data-theme="broadsheet"] {
   --color-accent:     #1a1a1a;
   --color-background: #c8c4bc;
 
-  --font-masthead: "UnifrakturMaguntia", serif;
+  --font-masthead: "Playfair Display", serif;
   --font-headline: "Playfair Display", serif;
   --font-body:     "Lora", Georgia, serif;
 }
