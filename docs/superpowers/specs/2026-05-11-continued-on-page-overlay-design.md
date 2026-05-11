@@ -46,8 +46,8 @@ These were resolved during brainstorming and inform the rest of the spec.
 
 | Path | Change |
 |---|---|
-| `app/components/story_component.rb` | Add `continued_page` method returning `@story.position + 1`. |
-| `app/components/story_component.html.erb` | Add `data-controller="overflow"`, `data-story-id`, `data-overflow-target="body"` on body, conditional "Continued" link with `data-turbo-frame="story-overlay"` and `hidden` attribute. |
+| `app/models/story.rb` | Add `continued_page` method returning `position + 1`. Used by both the component template and the cutout view. |
+| `app/components/story_component.html.erb` | Add `data-controller="overflow"`, `data-story-id` on the article; conditional "Continued" link with `data-overflow-target="link"`, `data-turbo-frame="story-overlay"`, and `hidden` attribute. |
 | `app/views/editions/show.html.erb` | Add page-level overlay container: `<div data-controller="overlay-frame">` wrapping `<turbo-frame id="story-overlay">`. |
 | `config/routes.rb` | Add `resources :stories, only: [] do; member do; get :full, action: :show_full; end; end`. |
 | `app/assets/stylesheets/base/grid.css` | Change `grid-auto-rows` from `minmax(var(--grid-row-unit), auto)` to `var(--grid-row-unit)`. |
@@ -66,7 +66,7 @@ These were resolved during brainstorming and inform the rest of the spec.
          data-story-id="<%= @story.id %>">
   <!-- existing supertitle, headline, subtitle, ticker, byline -->
 
-  <div class="story-body" data-overflow-target="body">
+  <div class="story-body">
     <!-- existing body rendering with quote-in-middle logic -->
   </div>
 
@@ -74,19 +74,21 @@ These were resolved during brainstorming and inform the rest of the spec.
      data-overflow-target="link"
      data-turbo-frame="story-overlay"
      href="<%= full_story_path(@story) %>"
-     hidden>Continued on page <%= continued_page %> »</a>
+     hidden>Continued on page <%= @story.continued_page %> »</a>
 </article>
 ```
 
 The link starts with `hidden`. The Stimulus controller removes the attribute only if overflow is detected.
 
-### `StoryComponent` Ruby additions
+### `Story` model addition
 
 ```ruby
 def continued_page
-  @story.position + 1
+  position + 1
 end
 ```
+
+Called from both `StoryComponent` (for the "Continued" link) and the cutout's masthead view.
 
 ### `overflow_controller.js`
 
@@ -94,20 +96,22 @@ end
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["body", "link"]
+  static targets = ["link"]
 
   connect() {
     document.fonts.ready.then(() => this.detectOverflow())
   }
 
   detectOverflow() {
-    if (this.bodyTarget.scrollHeight > this.bodyTarget.clientHeight) {
+    if (this.element.scrollHeight > this.element.clientHeight) {
       this.linkTarget.hidden = false
       this.element.classList.add("story--overflows")
     }
   }
 }
 ```
+
+We measure `this.element` (the `<article>`) because it's the element with the fixed grid-row height and `overflow: hidden`. Measuring `.story-body` would always return zero overflow — that element has no fixed height of its own.
 
 The `document.fonts.ready` wait is essential: web fonts (Libre Baskerville, Alfa Slab One, etc.) load asynchronously. Measuring before they arrive produces false negatives based on fallback-font metrics.
 
@@ -184,7 +188,7 @@ end
   <article class="story-cutout story-cutout--<%= @story.story_type %>"
            data-newspaper="<%= @story.edition&.newspaper&.slug %>">
     <header class="story-cutout__masthead">
-      <%= @story.edition&.newspaper&.name %> — Page <%= @story.position + 1 %>
+      <%= @story.edition&.newspaper&.name %> — Page <%= @story.continued_page %>
     </header>
     <%= render StoryComponent.new(story: @story) %>
     <footer class="story-cutout__footer">— continued from page 1</footer>
@@ -368,7 +372,6 @@ test "renders overflow detection data attributes" do
   render_inline(StoryComponent.new(story: story))
 
   assert_selector "article[data-controller='overflow']"
-  assert_selector "[data-overflow-target='body']"
   assert_selector "a[data-overflow-target='link'][hidden]"
 end
 
