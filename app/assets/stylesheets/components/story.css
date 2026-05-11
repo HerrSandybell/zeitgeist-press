@@ -5,7 +5,6 @@
 
 .story {
   padding: 1rem;
-  overflow: hidden;
   border-top: var(--rule-width) solid var(--color-rule);
 }
 
@@ -55,6 +54,7 @@
 
 .story--advertisement {
   text-align: center;
+  overflow: hidden;
   border: var(--rule-width) solid var(--color-rule);
   background-color: color-mix(in srgb, var(--color-paper) 92%, var(--color-ink) 8%);
 }

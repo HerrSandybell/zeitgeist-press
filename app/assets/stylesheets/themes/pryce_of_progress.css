@@ -19,7 +19,7 @@
   --font-headline:    "Alfa Slab One", serif;
   --font-body:        "Libre Baskerville", Georgia, serif;
 
-  --grid-row-unit:    220px;
+  --grid-row-unit:    14rem;
 }
 
 [data-newspaper="pryce-of-progress"] .story--major {
