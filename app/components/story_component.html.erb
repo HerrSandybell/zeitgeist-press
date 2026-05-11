@@ -1,5 +1,5 @@
 <article class="story story--<%= @story.story_type %>"
-         data-controller="overflow"
+         <% unless @story.advertisement? %>data-controller="overflow"<% end %>
          data-story-id="<%= @story.id %>">
   <% if @story.supertitle.present? %>
     <p class="story-supertitle"><%= @story.supertitle %></p>
@@ -34,9 +34,11 @@
     <% end %>
   </div>
 
-  <a class="story-continued-link"
-     data-overflow-target="link"
-     data-turbo-frame="story-overlay"
-     href="<%= full_story_path(@story) %>"
-     hidden>Continued on page <%= @story.continued_page %> »</a>
+  <% unless @story.advertisement? %>
+    <a class="story-continued-link"
+       data-overflow-target="link"
+       data-turbo-frame="story-overlay"
+       href="<%= full_story_path(@story) %>"
+       hidden>Continued on page <%= @story.continued_page %> »</a>
+  <% end %>
 </article>
