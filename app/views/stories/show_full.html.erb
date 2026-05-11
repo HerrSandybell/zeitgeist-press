@@ -2,7 +2,7 @@
   <article class="story-cutout story-cutout--<%= @story.story_type %>"
            data-newspaper="<%= @story.edition&.newspaper&.slug %>">
     <header class="story-cutout__masthead">
-      <%= @story.edition&.newspaper&.name %> — Page <%= @story.continued_page %>
+      <%= "#{@story.edition&.newspaper&.name} — " if @story.edition&.newspaper %>Page <%= @story.continued_page %>
     </header>
 
     <%= render StoryComponent.new(story: @story) %>

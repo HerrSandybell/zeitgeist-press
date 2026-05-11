@@ -33,4 +33,10 @@ class StoriesControllerTest < ActionDispatch::IntegrationTest
 
     assert_select "article.story-cutout[data-newspaper='the-daily-chronicle']"
   end
+
+  test "show_full renders masthead without newspaper name for orphan stories" do
+    get full_story_url(stories(:orphan))
+
+    assert_select ".story-cutout__masthead", text: /\APage 1\z/
+  end
 end
