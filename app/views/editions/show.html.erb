@@ -1,7 +1,9 @@
-<%= render "masthead", edition: @edition %>
+<div class="newspaper-page">
+  <%= render "masthead", edition: @edition %>
 
-<div class="front-page-grid">
-  <% @stories.each do |story| %>
-    <%= render "story", story: story %>
-  <% end %>
+  <div class="front-page-grid">
+    <% @stories.each do |story| %>
+      <%= render "story", story: story %>
+    <% end %>
+  </div>
 </div>

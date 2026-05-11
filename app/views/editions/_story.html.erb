@@ -18,8 +18,6 @@
     <p class="story-byline">By <%= story.author %></p>
   <% end %>
 
-  <div class="story-body"><%= simple_format(story.body) %></div>
-
   <% if story.quote.present? %>
     <blockquote class="story-quote">
       <%= story.quote %>
@@ -28,4 +26,6 @@
       <% end %>
     </blockquote>
   <% end %>
+
+  <div class="story-body"><%= simple_format(story.body) %></div>
 </article>

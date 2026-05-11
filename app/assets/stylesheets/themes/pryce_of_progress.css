@@ -14,12 +14,14 @@
   --color-ink-muted:  #5c3d2e;
   --color-rule:       #2c1810;
   --color-accent:     #8b1a1a;
+  --color-background: #b09060;
 
   --font-masthead:    "Rye", serif;
   --font-headline:    "Alfa Slab One", serif;
   --font-body:        "Libre Baskerville", Georgia, serif;
 
   --grid-row-unit:    14rem;
+  --page-width:       1100px;
 }
 
 [data-newspaper="pryce-of-progress"] .story--major {
@@ -38,4 +40,16 @@
 [data-newspaper="pryce-of-progress"] .story--advertisement {
   grid-column: span 1;
   aspect-ratio: 1;
+}
+
+[data-newspaper="pryce-of-progress"] .story--major .story-body {
+  column-count: 4;
+  column-gap: var(--column-gap);
+  column-rule: var(--rule-width) solid var(--color-rule);
+}
+
+[data-newspaper="pryce-of-progress"] .story--secondary .story-body {
+  column-count: 2;
+  column-gap: var(--column-gap);
+  column-rule: var(--rule-width) solid var(--color-rule);
 }
