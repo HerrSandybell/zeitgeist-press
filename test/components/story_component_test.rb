@@ -25,8 +25,25 @@ class StoryComponentTest < ViewComponent::TestCase
     assert_selector ".story-subtitle",   text: story.subtitle
     assert_selector ".story-byline",     text: "By #{story.author}"
     assert_selector ".story-ticker",     text: story.summary_ticker
-    assert_selector ".story-quote",      text: story.quote
-    assert_selector ".story-quote cite", text: "— #{story.quote_origin}"
+    assert_selector ".story-body .story-quote",      text: story.quote
+    assert_selector ".story-body .story-quote cite", text: "— #{story.quote_origin}"
+  end
+
+  test "quote is rendered inside story-body between body paragraphs" do
+    story = stories(:one)
+    story.body  = "First paragraph.\n\nSecond paragraph.\n\nThird paragraph."
+    story.quote = "A pithy remark."
+
+    render_inline(StoryComponent.new(story: story))
+
+    html = page.native.inner_html
+    body_start  = html.index('story-body')
+    quote_pos   = html.index('A pithy remark')
+    third_pos   = html.index('Third paragraph')
+    first_pos   = html.index('First paragraph')
+
+    assert first_pos < quote_pos,  "First paragraph should appear before quote"
+    assert quote_pos < third_pos,  "Quote should appear before final paragraph"
   end
 
   test "omits optional fields when blank" do

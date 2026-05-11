@@ -33,6 +33,7 @@
   padding-left: 1rem;
   margin: 1em 0;
   color: var(--color-ink);
+  column-span: all;
 }
 
 .story-quote cite {

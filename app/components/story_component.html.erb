@@ -17,14 +17,18 @@
     <p class="story-byline">By <%= @story.author %></p>
   <% end %>
 
-  <% if @story.quote.present? %>
-    <blockquote class="story-quote">
-      <%= @story.quote %>
-      <% if @story.quote_origin.present? %>
-        <cite>— <%= @story.quote_origin %></cite>
-      <% end %>
-    </blockquote>
-  <% end %>
-
-  <div class="story-body"><%= simple_format(@story.body) %></div>
+  <div class="story-body">
+    <% if @story.quote.present? %>
+      <%= simple_format(body_halves.first) %>
+      <blockquote class="story-quote">
+        <%= @story.quote %>
+        <% if @story.quote_origin.present? %>
+          <cite>— <%= @story.quote_origin %></cite>
+        <% end %>
+      </blockquote>
+      <%= simple_format(body_halves.last) if body_halves.last.present? %>
+    <% else %>
+      <%= simple_format(@story.body) %>
+    <% end %>
+  </div>
 </article>
