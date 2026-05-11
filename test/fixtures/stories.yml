@@ -16,3 +16,21 @@ orphan:
   story_type: major
   headline: An Orphaned Story
   body: This story has no edition yet.
+
+tertiary_one:
+  edition: one
+  story_type: tertiary
+  headline: A Tertiary Item
+  body: The full text of a tertiary story.
+
+ad_one:
+  edition: one
+  story_type: advertisement
+  headline: Wares For Sale
+  body: One slightly used cabinet, no questions.
+
+secondary_one:
+  edition: one
+  story_type: secondary
+  headline: Inside Edition One
+  body: Secondary story for edition one.
