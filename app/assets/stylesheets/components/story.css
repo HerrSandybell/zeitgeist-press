@@ -6,6 +6,8 @@
 .story {
   padding: 1rem;
   border-top: var(--rule-width) solid var(--color-rule);
+  position: relative;
+  overflow: hidden;
 }
 
 .story-subtitle {
@@ -62,4 +64,35 @@
 .story--advertisement .story-body {
   text-align: center;
   font-size: 0.875rem;
+}
+
+.story--overflows .story-body {
+  padding-bottom: 2rem;
+}
+
+.story--overflows::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4.5rem;
+  background: linear-gradient(to bottom, transparent 0%, var(--color-paper) 55%);
+  pointer-events: none;
+}
+
+.story-continued-link {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.75rem;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  text-decoration: none;
+  z-index: 1;
+}
+
+.story-continued-link:hover {
+  text-decoration: underline;
 }
