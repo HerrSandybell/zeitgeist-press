@@ -15,4 +15,14 @@ class NewspaperTest < ActiveSupport::TestCase
     association = Newspaper.reflect_on_association(:editions)
     assert_equal :has_many, association.macro
   end
+
+  test "slug parameterizes the name" do
+    newspaper = Newspaper.new(name: "Pryce of Progress")
+    assert_equal "pryce-of-progress", newspaper.slug
+  end
+
+  test "slug handles punctuation and ampersands" do
+    newspaper = Newspaper.new(name: "The Times & Echo")
+    assert_equal "the-times-echo", newspaper.slug
+  end
 end

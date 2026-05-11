@@ -1,0 +1,74 @@
+/*
+ * Base typography. Applies the design tokens to HTML elements and shared
+ * role classes. Theme files override the underlying tokens — these rules
+ * stay constant across newspapers.
+ */
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  line-height: 1.6;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline);
+  color: var(--color-ink);
+  margin: 0 0 0.5em;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--color-ink);
+  text-decoration: underline;
+}
+
+/* Shared typographic roles — used by views in later phases. */
+
+.masthead-title {
+  font-family: var(--font-masthead);
+  font-size: 4rem;
+  text-align: center;
+  margin: 0;
+}
+
+.attention-bar {
+  font-family: var(--font-headline);
+  color: var(--color-accent);
+  font-weight: bold;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border-top: var(--rule-width) solid var(--color-rule);
+  border-bottom: var(--rule-width) solid var(--color-rule);
+}
+
+.headline--major     { font-size: 3rem;   line-height: 1.1;  }
+.headline--secondary { font-size: 2rem;   line-height: 1.2;  }
+.headline--tertiary  { font-size: 1.5rem; line-height: 1.25; }
+
+.story-supertitle {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+}
+
+.story-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.story-byline {
+  font-family: var(--font-body);
+  font-style: italic;
+  color: var(--color-ink-muted);
+  font-size: 0.875rem;
+}

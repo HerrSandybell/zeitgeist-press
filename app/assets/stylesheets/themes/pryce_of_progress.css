@@ -1,0 +1,21 @@
+/*
+ * Theme: Pryce of Progress
+ * Character: Amateur yellow rag. Cheap drama. Aged newsprint.
+ *
+ * Google Fonts is imported here so each newspaper carries its own type
+ * stack. Future newspapers add their own @import in their own theme file.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Alfa+Slab+One&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+[data-newspaper="pryce-of-progress"] {
+  --color-paper:      #f2e8c9;
+  --color-ink:        #2c1810;
+  --color-ink-muted:  #5c3d2e;
+  --color-rule:       #2c1810;
+  --color-accent:     #8b1a1a;
+
+  --font-masthead:    "Rye", serif;
+  --font-headline:    "Alfa Slab One", serif;
+  --font-body:        "Libre Baskerville", Georgia, serif;
+}
