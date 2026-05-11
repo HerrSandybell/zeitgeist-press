@@ -31,7 +31,7 @@ class StoriesControllerTest < ActionDispatch::IntegrationTest
   test "show_full carries the newspaper slug for theme scoping" do
     get full_story_url(stories(:one))
 
-    assert_select "article.story-cutout[data-newspaper='the-daily-chronicle']"
+    assert_select "article.story-cutout[data-newspaper='pryce-of-progress']"
   end
 
   test "show_full renders masthead without newspaper name for orphan stories" do
