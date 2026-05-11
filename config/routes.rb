@@ -19,5 +19,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root "newspapers#index"
+  resource :theme, only: [:update]
+
+  root "editions#show_current"
 end

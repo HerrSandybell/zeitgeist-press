@@ -1,0 +1,30 @@
+.site-navbar {
+  background: #1a1a1a;
+  color: #e8e4d8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.35rem 1.5rem;
+  font-size: 0.75rem;
+  font-family: var(--font-body, serif);
+}
+
+.site-navbar__name {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+}
+
+.site-navbar select {
+  background: transparent;
+  color: #e8e4d8;
+  border: 1px solid rgba(232, 228, 216, 0.4);
+  padding: 0.15rem 0.4rem;
+  font-size: 0.7rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.site-navbar select option {
+  background: #1a1a1a;
+}

@@ -10,13 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_10_063906) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_11_195908) do
   create_table "editions", force: :cascade do |t|
     t.string "attention_bar"
+    t.string "city"
     t.datetime "created_at", null: false
     t.integer "day"
+    t.string "edition_type"
     t.integer "issue_number"
     t.integer "newspaper_id", null: false
+    t.string "price"
     t.boolean "published", default: false, null: false
     t.integer "season"
     t.datetime "updated_at", null: false
@@ -28,6 +31,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_10_063906) do
   create_table "newspapers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "name"
+    t.string "print_location"
+    t.string "tagline"
     t.datetime "updated_at", null: false
   end
 

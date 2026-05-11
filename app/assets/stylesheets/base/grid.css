@@ -12,3 +12,9 @@
   gap: var(--column-gap);
   padding: 0 1rem 2rem;
 }
+
+.advertisements-grid {
+  border-top: calc(var(--rule-width) * 3) double var(--color-rule);
+  padding-top: 1rem;
+  margin-top: -1rem;
+}

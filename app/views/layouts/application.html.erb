@@ -23,7 +23,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body data-newspaper="<%= @edition&.newspaper&.slug %>">
-    <%= yield %>
+  <body data-newspaper="<%= @edition&.newspaper&.slug %>"
+        data-theme="<%= session[:theme] %>">
+    <%= render NavbarComponent.new(current_theme: session[:theme]) %>
+    <main class="page-content">
+      <%= yield %>
+    </main>
+    <%= render FooterComponent.new %>
   </body>
 </html>

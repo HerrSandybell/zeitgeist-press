@@ -1,11 +1,21 @@
 <div class="newspaper-page">
   <%= render "masthead", edition: @edition %>
 
+  <% articles, ads = @stories.partition { |s| !s.advertisement? } %>
+
   <div class="front-page-grid">
-    <% @stories.each do |story| %>
+    <% articles.each do |story| %>
       <%= render StoryComponent.new(story: story) %>
     <% end %>
   </div>
+
+  <% if ads.any? %>
+    <div class="front-page-grid advertisements-grid">
+      <% ads.each do |story| %>
+        <%= render StoryComponent.new(story: story) %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 
 <div class="overlay-frame"

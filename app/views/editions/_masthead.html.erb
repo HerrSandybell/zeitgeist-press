@@ -1,9 +1,39 @@
 <%# locals: (edition:) %>
 <header class="masthead">
-  <h1 class="masthead-title"><%= edition.newspaper.name %></h1>
-  <p class="masthead-subtitle"><%= edition.label %> · Vol. <%= edition.volume %>, No. <%= edition.issue_number %></p>
+
+  <% if edition.edition_type.present? || edition.price.present? %>
+    <div class="masthead-meta">
+      <% if edition.edition_type.present? %>
+        <span class="masthead-edition-type"><%= edition.edition_type %></span>
+      <% end %>
+      <% if edition.price.present? %>
+        <span class="masthead-price"><%= edition.price %></span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <h1 class="masthead-title">
+    <% before, separator, after = edition.newspaper.name.partition(" of ") %>
+    <%= before %><% if separator.present? %> <em>of</em> <% end %><%= after %>
+  </h1>
+
+  <% if edition.newspaper.tagline.present? %>
+    <p class="masthead-tagline">✦ <%= edition.newspaper.tagline %> ✦</p>
+  <% end %>
+
+  <div class="masthead-info">
+    <span class="masthead-info__vol">Vol. <%= edition.volume %> · No. <%= edition.issue_number %></span>
+    <span class="masthead-info__date">
+      <% if edition.city.present? %>
+        <%= edition.city %> —
+      <% end %>
+      <%= edition.label %>
+    </span>
+    <span class="masthead-info__location"><%= edition.newspaper.print_location %></span>
+  </div>
 
   <% if edition.attention_bar.present? %>
     <p class="attention-bar"><%= edition.attention_bar %></p>
   <% end %>
+
 </header>

@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lora:ital,wght@0,400;0,700;1,400&display=swap');
+
+body[data-theme="broadsheet"] {
+  --color-paper:      #f0ede6;
+  --color-ink:        #1a1a1a;
+  --color-ink-muted:  #555555;
+  --color-rule:       #1a1a1a;
+  --color-accent:     #1a1a1a;
+  --color-background: #c8c4bc;
+
+  --font-masthead: "Playfair Display", serif;
+  --font-headline: "Playfair Display", serif;
+  --font-body:     "Lora", Georgia, serif;
+}

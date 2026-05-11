@@ -1,10 +1,17 @@
 /*
  * Application stylesheet — Propshaft manifest.
- * Order matters: tokens first (declares the contract),
- * then typography (uses the tokens),
- * then themes (override tokens per newspaper).
+ * Order: tokens (neutral fallbacks) → typography → visual themes → layout themes → components.
+ * Visual themes use :root (yellow_sheets) or body[data-theme] (broadsheet).
+ * Layout themes (data-newspaper) set grid structure only.
  */
 
 @import "base/tokens.css";
 @import "base/typography.css";
+@import "base/grid.css";
+@import "base/layout.css";
+@import "themes/yellow_sheets.css";
+@import "themes/broadsheet.css";
 @import "themes/pryce_of_progress.css";
+@import "components/masthead.css";
+@import "components/navbar.css";
+@import "components/footer.css";

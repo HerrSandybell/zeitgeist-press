@@ -10,8 +10,12 @@ body {
   background-color: var(--color-background);
   line-height: 1.6;
   margin: 0;
-  padding: 2rem 1rem;
+  padding: 0;
   box-sizing: border-box;
+}
+
+.page-content {
+  padding: 2rem 1rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -34,19 +38,12 @@ a {
 
 .masthead-title {
   font-family: var(--font-masthead);
-  font-size: 4rem;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
   text-align: center;
   margin: 0;
-}
-
-.attention-bar {
-  font-family: var(--font-headline);
-  color: var(--color-accent);
-  font-weight: bold;
-  text-align: center;
-  padding: 0.5rem 1rem;
-  border-top: var(--rule-width) solid var(--color-rule);
-  border-bottom: var(--rule-width) solid var(--color-rule);
 }
 
 .headline--major     { font-size: 3rem;   line-height: 1.1;  }

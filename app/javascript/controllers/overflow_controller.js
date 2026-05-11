@@ -1,25 +1,32 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Detects whether a story article's content exceeds its grid cell.
-// If so: reveals the "Continued" link and tags the article with
+// Detects whether a story's body has more content than fits in its allotted
+// space. Reveals the "Continued" link and tags the article with
 // .story--overflows (which triggers the fade gradient in CSS).
 //
-// We measure this.element (the <article>) because the grid pins it to
-// var(--grid-row-unit) and clips with overflow: hidden. The story-body
-// itself has no fixed height — measuring it would always return 0 overflow.
+// Single-column bodies overflow vertically: scrollHeight > clientHeight.
+// Multi-column bodies (with column-fill: auto) overflow horizontally as
+// excess content spills into additional columns beyond the visible ones:
+// scrollWidth > clientWidth.
 //
-// document.fonts.ready is essential: web fonts load asynchronously, and
-// measuring before they arrive produces false negatives based on fallback
-// font metrics.
+// We measure .story-body (not the article) because flexbox constrains it to
+// the available height, so the measurement is accurate. document.fonts.ready
+// + rAF ensures fonts have loaded and the browser has run a layout pass.
 export default class extends Controller {
   static targets = ["link"]
 
   connect() {
-    document.fonts.ready.then(() => this.detectOverflow())
+    document.fonts.ready.then(() => requestAnimationFrame(() => this.detectOverflow()))
   }
 
   detectOverflow() {
-    if (this.element.scrollHeight > this.element.clientHeight) {
+    const body = this.element.querySelector(".story-body")
+    if (!body) return
+
+    const overflowsVertically = body.scrollHeight > body.clientHeight
+    const overflowsHorizontally = body.scrollWidth > body.clientWidth
+
+    if (overflowsVertically || overflowsHorizontally) {
       if (this.hasLinkTarget) {
         this.linkTarget.hidden = false
       }
