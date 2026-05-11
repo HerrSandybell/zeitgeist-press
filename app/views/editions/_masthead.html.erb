@@ -14,7 +14,7 @@
 
   <h1 class="masthead-title">
     <% before, separator, after = edition.newspaper.name.partition(" of ") %>
-    <%= before %><% if separator.present? %><em>of</em><% end %><%= after %>
+    <%= before %><% if separator.present? %> <em>of</em> <% end %><%= after %>
   </h1>
 
   <% if edition.newspaper.tagline.present? %>
