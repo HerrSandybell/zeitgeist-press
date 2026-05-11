@@ -20,22 +20,24 @@
   --font-headline:    "Alfa Slab One", serif;
   --font-body:        "Libre Baskerville", Georgia, serif;
 
-  --grid-row-unit:    14rem;
+  --grid-row-unit:    20rem;
   --grid-columns:     12;
   --page-width:       1100px;
 }
 
 [data-newspaper="pryce-of-progress"] .story--major {
   grid-column: span 12;
+  grid-row: span 2;
 }
 
 [data-newspaper="pryce-of-progress"] .story--secondary {
   grid-column: span 8;
+  grid-row: span 2;
 }
 
 [data-newspaper="pryce-of-progress"] .story--tertiary {
   grid-column: span 4;
-  align-self: start;
+  grid-row: span 2;
 }
 
 [data-newspaper="pryce-of-progress"] .story--advertisement {
@@ -48,8 +50,16 @@
   column-rule: var(--rule-width) solid var(--color-rule);
 }
 
+[data-newspaper="pryce-of-progress"] .story--major.story--overflows::after {
+  left: 66%;
+}
+
 [data-newspaper="pryce-of-progress"] .story--secondary .story-body {
   column-count: 2;
   column-gap: var(--column-gap);
   column-rule: var(--rule-width) solid var(--color-rule);
+}
+
+[data-newspaper="pryce-of-progress"] .story--secondary.story--overflows::after {
+  left: 50%;
 }

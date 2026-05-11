@@ -13,5 +13,11 @@ Rails.application.routes.draw do
     resources :editions, only: [:show]
   end
 
-  root "newspapers#index"  
+  resources :stories, only: [] do
+    member do
+      get :full, action: :show_full
+    end
+  end
+
+  root "newspapers#index"
 end

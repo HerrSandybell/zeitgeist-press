@@ -57,4 +57,19 @@ class StoryTest < ActiveSupport::TestCase
     assert_equal Story.where(story_type: :advertisement).sort, Story.advertisement.sort
     assert Story.advertisement.all? { |s| s.advertisement? }
   end
+
+  test "continued_page returns position + 1" do
+    story = stories(:one)
+    story.position = 0
+    assert_equal 1, story.continued_page
+
+    story.position = 7
+    assert_equal 8, story.continued_page
+  end
+
+  test "continued_page treats nil position as 0" do
+    story = stories(:one)
+    story.position = nil
+    assert_equal 1, story.continued_page
+  end
 end

@@ -63,4 +63,30 @@ class StoryComponentTest < ViewComponent::TestCase
     assert_selector "article.story--advertisement"
     assert_selector "h2.headline--advertisement"
   end
+
+  test "renders overflow controller data attributes" do
+    story = stories(:one)
+    render_inline(StoryComponent.new(story: story))
+
+    assert_selector "article[data-controller='overflow']"
+    assert_selector "article[data-story-id='#{story.id}']"
+  end
+
+  test "renders hidden continued link with derived page number" do
+    story = stories(:one)
+    story.position = 3
+    render_inline(StoryComponent.new(story: story))
+
+    assert_selector "a.story-continued-link[data-overflow-target='link'][hidden]",
+                    text: /Continued on page 4/,
+                    visible: :all
+  end
+
+  test "continued link targets the story-overlay turbo frame" do
+    story = stories(:one)
+    render_inline(StoryComponent.new(story: story))
+
+    assert_selector "a.story-continued-link[data-turbo-frame='story-overlay']",
+                    visible: :all
+  end
 end

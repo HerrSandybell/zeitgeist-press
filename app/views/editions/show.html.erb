@@ -7,3 +7,12 @@
     <% end %>
   </div>
 </div>
+
+<div class="overlay-frame"
+     data-controller="overlay-frame"
+     data-action="turbo:frame-load@window->overlay-frame#show click->overlay-frame#close">
+  <turbo-frame id="story-overlay"
+               class="overlay-frame__frame"
+               data-overlay-frame-target="frame"
+               data-action="click->overlay-frame#stopPropagation"></turbo-frame>
+</div>

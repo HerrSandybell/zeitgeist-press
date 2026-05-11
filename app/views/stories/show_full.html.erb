@@ -1,0 +1,12 @@
+<turbo-frame id="story-overlay">
+  <article class="story-cutout story-cutout--<%= @story.story_type %>"
+           data-newspaper="<%= @story.edition&.newspaper&.slug %>">
+    <header class="story-cutout__masthead">
+      <%= "#{@story.edition&.newspaper&.name} — " if @story.edition&.newspaper %>Page <%= @story.continued_page %>
+    </header>
+
+    <%= render StoryComponent.new(story: @story) %>
+
+    <footer class="story-cutout__footer">— continued from page 1</footer>
+  </article>
+</turbo-frame>

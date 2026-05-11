@@ -1,0 +1,79 @@
+/*
+ * Story overlay — dimmed backdrop and rotated paper-cutout card
+ * shown when the user clicks "Continued on page #".
+ *
+ * The .overlay-frame container is permanent in the DOM but only
+ * receives pointer events and a dark backdrop when .overlay-frame--open
+ * is added by overlay_frame_controller.js (on turbo:frame-load).
+ */
+
+.overlay-frame {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 15, 10, 0);
+  pointer-events: none;
+  transition: background 200ms ease;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 2rem 1rem;
+}
+
+.overlay-frame--open {
+  background: rgba(20, 15, 10, 0.85);
+  pointer-events: auto;
+}
+
+.overlay-frame__frame {
+  display: block;
+  max-width: min(90vw, 56rem);
+  margin-block: auto;
+}
+
+.story-cutout {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  padding: 1.5rem 2rem;
+  border: 1px solid var(--color-rule);
+  box-shadow: 3px 4px 24px rgba(0, 0, 0, 0.5),
+              0 1px 4px rgba(0, 0, 0, 0.3);
+  transform: rotate(-0.8deg);
+}
+
+.story-cutout--secondary {
+  transform: rotate(1deg);
+  max-width: 36rem;
+}
+
+.story-cutout--tertiary {
+  transform: rotate(-0.5deg);
+  max-width: 28rem;
+}
+
+.story-cutout--advertisement {
+  transform: rotate(1.5deg);
+  max-width: 22rem;
+}
+
+.story-cutout__masthead {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-rule);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.story-cutout__footer {
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--color-ink-muted);
+  text-align: right;
+  border-top: 1px solid var(--color-rule);
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+}
