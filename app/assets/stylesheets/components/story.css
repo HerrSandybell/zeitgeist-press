@@ -18,7 +18,6 @@
   overflow: hidden;
 }
 
-.story-body p,
 .story-body blockquote {
   break-inside: avoid;
 }
