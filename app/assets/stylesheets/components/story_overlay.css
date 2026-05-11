@@ -85,6 +85,10 @@
   column-fill: balance;
 }
 
+.headline {
+  text-transform: uppercase;
+}
+
 .story-cutout__footer {
   font-size: 0.75rem;
   font-style: italic;
