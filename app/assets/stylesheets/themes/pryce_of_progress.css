@@ -29,13 +29,18 @@
   grid-column: span 12;
 }
 
+[data-newspaper="pryce-of-progress"] .front-page-grid {
+  grid-template-rows: auto 40rem;
+}
+
 [data-newspaper="pryce-of-progress"] .story--secondary {
   grid-column: span 8;
+  overflow: hidden;
 }
 
 [data-newspaper="pryce-of-progress"] .story--tertiary {
   grid-column: span 4;
-  align-self: start;
+  overflow: hidden;
 }
 
 [data-newspaper="pryce-of-progress"] .story--advertisement {
