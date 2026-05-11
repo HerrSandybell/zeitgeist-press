@@ -1,20 +1,69 @@
-/*
- * Masthead component — the newspaper's page header.
- * Type rules for .masthead-title and .attention-bar live in base/typography.css.
- * This file adds spacing and the subtitle treatment.
- */
-
 .masthead {
-  padding: 2rem 1rem 1rem;
+  padding: 1rem 1rem 0;
   text-align: center;
   border-bottom: calc(var(--rule-width) * 3) double var(--color-rule);
   margin-bottom: 1.5rem;
 }
 
-.masthead-subtitle {
+.masthead-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding-bottom: 0.5rem;
+}
+
+.masthead-edition-type {
+  font-variant: small-caps;
+}
+
+.masthead-price {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.1rem 0.5rem;
+}
+
+.masthead-title em {
+  font-style: italic;
+}
+
+.masthead-tagline {
   font-family: var(--font-body);
   font-style: italic;
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: var(--color-ink-muted);
-  margin: 0 0 1rem;
+  margin: 0.25rem 0 0.5rem;
+  letter-spacing: 0.03em;
+}
+
+.masthead-info {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-top: var(--rule-width) solid var(--color-rule);
+  border-bottom: var(--rule-width) solid var(--color-rule);
+  padding: 0.3rem 0;
+  margin: 0.75rem 0;
+}
+
+.masthead-info__vol      { text-align: left; }
+.masthead-info__date     { text-align: center; }
+.masthead-info__location { text-align: right; }
+
+.attention-bar {
+  font-family: var(--font-headline);
+  font-weight: bold;
+  text-align: center;
+  padding: 0.4rem 1rem;
+  margin: 0 -1rem;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  letter-spacing: 0.06em;
+  font-size: 0.875rem;
 }

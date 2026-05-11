@@ -39,16 +39,6 @@ a {
   margin: 0;
 }
 
-.attention-bar {
-  font-family: var(--font-headline);
-  color: var(--color-accent);
-  font-weight: bold;
-  text-align: center;
-  padding: 0.5rem 1rem;
-  border-top: var(--rule-width) solid var(--color-rule);
-  border-bottom: var(--rule-width) solid var(--color-rule);
-}
-
 .headline--major     { font-size: 3rem;   line-height: 1.1;  }
 .headline--secondary { font-size: 2rem;   line-height: 1.2;  }
 .headline--tertiary  { font-size: 1.5rem; line-height: 1.25; }
