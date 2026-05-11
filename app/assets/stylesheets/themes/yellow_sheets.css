@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&family=Alfa+Slab+One&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --color-paper:      #f2e8c9;
+  --color-ink:        #2c1810;
+  --color-ink-muted:  #5c3d2e;
+  --color-rule:       #2c1810;
+  --color-accent:     #8b1a1a;
+  --color-background: #b09060;
+
+  --font-masthead:    "Rye", serif;
+  --font-headline:    "Alfa Slab One", serif;
+  --font-body:        "Libre Baskerville", Georgia, serif;
+}
