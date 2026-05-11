@@ -26,7 +26,9 @@
   <body data-newspaper="<%= @edition&.newspaper&.slug %>"
         data-theme="<%= session[:theme] %>">
     <%= render NavbarComponent.new(current_theme: session[:theme]) %>
-    <%= yield %>
+    <main class="page-content">
+      <%= yield %>
+    </main>
     <%= render FooterComponent.new %>
   </body>
 </html>

@@ -10,8 +10,12 @@ body {
   background-color: var(--color-background);
   line-height: 1.6;
   margin: 0;
-  padding: 2rem 1rem;
+  padding: 0;
   box-sizing: border-box;
+}
+
+.page-content {
+  padding: 2rem 1rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
