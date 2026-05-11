@@ -60,4 +60,19 @@ class StoryOverflowTest < ApplicationSystemTestCase
     find("article.story-cutout").click
     assert_selector ".overlay-frame--open"
   end
+
+  test "short stories do not display the continued link" do
+    short = stories(:tertiary_one)
+    visit newspaper_edition_path(@newspaper, @edition)
+
+    # Wait until the overflow controller has had a chance to run on all
+    # stories on the page — the long_major's link surfaces, signaling
+    # detection has completed for everyone.
+    assert_selector "article[data-story-id='#{@long.id}'] a.story-continued-link",
+                    visible: true, wait: 5
+
+    within "article[data-story-id='#{short.id}']" do
+      assert_no_selector "a.story-continued-link", visible: true
+    end
+  end
 end
