@@ -15,7 +15,7 @@ export default class extends Controller {
   static targets = ["link"]
 
   connect() {
-    document.fonts.ready.then(() => this.detectOverflow())
+    document.fonts.ready.then(() => requestAnimationFrame(() => this.detectOverflow()))
   }
 
   detectOverflow() {
