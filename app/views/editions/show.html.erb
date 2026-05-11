@@ -1,6 +1,6 @@
 <h1><%= @edition.newspaper.name %></h1>
 <h2><%= @edition.label %> </h2>
-<% @edition.stories.each do |story| %>
+<% @stories.each do |story| %>
   <h3><%= story.headline %></h3>
   <p><%= story.body %></p>
 <% end %>
