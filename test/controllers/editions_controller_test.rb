@@ -55,4 +55,44 @@ class EditionsControllerTest < ActionDispatch::IntegrationTest
     get root_url
     assert_response :not_found
   end
+
+  test "masthead renders edition_type and price when present" do
+    get newspaper_edition_url(editions(:two).newspaper, editions(:two))
+    assert_select ".masthead-edition-type", text: "Extra Edition"
+    assert_select ".masthead-price", text: "Two Pennies"
+  end
+
+  test "masthead omits meta row when edition_type and price are nil" do
+    get newspaper_edition_url(editions(:one).newspaper, editions(:one))
+    assert_select ".masthead-meta", count: 0
+  end
+
+  test "masthead renders tagline when present" do
+    get newspaper_edition_url(editions(:two).newspaper, editions(:two))
+    assert_select ".masthead-tagline"
+  end
+
+  test "masthead omits tagline when nil" do
+    get newspaper_edition_url(editions(:one).newspaper, editions(:one))
+    assert_select ".masthead-tagline", count: 0
+  end
+
+  test "masthead info row includes city when present" do
+    get newspaper_edition_url(editions(:two).newspaper, editions(:two))
+    assert_select ".masthead-info__date" do |nodes|
+      assert_match(/Flint/, nodes.first.text)
+    end
+  end
+
+  test "masthead info row omits city separator when city is nil" do
+    get newspaper_edition_url(editions(:one).newspaper, editions(:one))
+    assert_select ".masthead-info__date" do |nodes|
+      assert_no_match(/ — /, nodes.first.text)
+    end
+  end
+
+  test "masthead info row omits print_location when nil" do
+    get newspaper_edition_url(editions(:one).newspaper, editions(:one))
+    assert_select ".masthead-info__location", text: ""
+  end
 end
