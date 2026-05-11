@@ -19,5 +19,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root "newspapers#index"
+  root "editions#show_current"
 end

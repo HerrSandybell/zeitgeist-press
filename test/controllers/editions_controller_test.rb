@@ -43,4 +43,16 @@ class EditionsControllerTest < ActionDispatch::IntegrationTest
     assert_includes response.body, stories(:ad_four).headline
     assert_not_includes response.body, stories(:ad_five).headline
   end
+
+  test "show_current renders the first published edition at root" do
+    get root_url
+    assert_response :success
+    assert_select "h1.masthead-title", text: editions(:two).newspaper.name
+  end
+
+  test "show_current returns 404 when no published edition exists" do
+    Edition.update_all(published: false)
+    get root_url
+    assert_response :not_found
+  end
 end
