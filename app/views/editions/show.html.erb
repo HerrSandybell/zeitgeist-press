@@ -3,7 +3,7 @@
 
   <div class="front-page-grid">
     <% @stories.each do |story| %>
-      <%= render "story", story: story %>
+      <%= render StoryComponent.new(story: story) %>
     <% end %>
   </div>
 </div>
