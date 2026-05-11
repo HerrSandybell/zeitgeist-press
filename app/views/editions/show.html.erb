@@ -1,6 +1,5 @@
 <%= render "masthead", edition: @edition %>
 
 <% @stories.each do |story| %>
-  <h3><%= story.headline %></h3>
-  <p><%= story.body %></p>
+  <%= render "story", story: story %>
 <% end %>

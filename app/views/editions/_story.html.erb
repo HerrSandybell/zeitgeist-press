@@ -1,0 +1,31 @@
+<%# locals: (story:) %>
+<article class="story story--<%= story.story_type %>">
+  <% if story.supertitle.present? %>
+    <p class="story-supertitle"><%= story.supertitle %></p>
+  <% end %>
+
+  <h2 class="headline headline--<%= story.story_type %>"><%= story.headline %></h2>
+
+  <% if story.subtitle.present? %>
+    <p class="story-subtitle"><%= story.subtitle %></p>
+  <% end %>
+
+  <% if story.summary_ticker.present? %>
+    <p class="story-ticker"><%= story.summary_ticker %></p>
+  <% end %>
+
+  <% if story.author.present? %>
+    <p class="story-byline">By <%= story.author %></p>
+  <% end %>
+
+  <div class="story-body"><%= simple_format(story.body) %></div>
+
+  <% if story.quote.present? %>
+    <blockquote class="story-quote">
+      <%= story.quote %>
+      <% if story.quote_origin.present? %>
+        <cite>— <%= story.quote_origin %></cite>
+      <% end %>
+    </blockquote>
+  <% end %>
+</article>
