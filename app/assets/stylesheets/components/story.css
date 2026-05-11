@@ -15,6 +15,12 @@
 .story-body {
   flex: 1;
   min-height: 0;
+  overflow: hidden;
+}
+
+.story-body p,
+.story-body blockquote {
+  break-inside: avoid;
 }
 
 .story-subtitle {
@@ -71,10 +77,6 @@
 .story--advertisement .story-body {
   text-align: center;
   font-size: 0.875rem;
-}
-
-.story--overflows .story-body {
-  padding-bottom: 2rem;
 }
 
 .story--overflows::after {
