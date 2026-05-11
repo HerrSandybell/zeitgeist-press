@@ -67,6 +67,7 @@ All semantic custom properties declared here with neutral defaults. Every theme 
 
   --rule-width:       1px;
   --column-gap:       1.5rem;
+  --grid-row-unit:    auto;  /* set to fixed length in themes to size tertiary/ad cells */
 }
 ```
 
@@ -123,40 +124,51 @@ Body text is justified — period newspapers always were.
 
 ## Edition Front Page Layout
 
+### Layout as Part of the Theme
+
+Layout geometry (grid column count, row unit height, story spans) is per-newspaper, defined in the theme file alongside colors and typography. The base CSS defines the grid container structure and default span values. Each newspaper's theme file overrides them.
+
+This means a future newspaper can use a completely different column count or story proportions without touching shared code.
+
 ### Grid
 
-4-column CSS Grid. Stories render in type order (`major → secondary → tertiary → advertisement`), then by database order within each type. No `position` field used for ordering.
+The base grid container — column count and row unit are overridden per theme:
 
 ```css
 .front-page-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-flow: row;
-  grid-auto-rows: auto;
+  grid-auto-rows: var(--grid-row-unit, auto);
   gap: var(--column-gap);
 }
 ```
 
-### Story Slot Spans
+`--grid-row-unit` is a theme-level token. Setting it to a fixed value (e.g. `200px`) gives tertiary and advertisement consistent, relatable heights. Without it, row heights are content-driven.
 
-Each story type declares its column span. The grid auto-places stories in rendering order. No named template areas — the layout is flexible to variable story counts.
+### Story Slot Dimensions — Pryce of Progress
 
-```css
-.story--major         { grid-column: span 3; }
-.story--secondary     { grid-column: span 1; }
-.story--tertiary      { grid-column: span 1; }
-.story--advertisement { grid-column: span 1; }
-```
+Defined in `themes/pryce_of_progress.css`. Each story type has a distinct visual footprint:
 
-The "chaotic broadsheet" feel emerges from span asymmetry. With one major and one secondary, row 1 fills perfectly (3 + 1 = 4 cols). Subsequent stories flow into new rows naturally. Empty slots leave no gaps.
-
-Themes can override spans per newspaper:
+| Type | Columns | Rows | Effect |
+|---|---|---|---|
+| major | span 4 | span 1 | Full-width dominant banner |
+| secondary | span 2 | span 1 | Half-width, clearly subordinate |
+| tertiary | span 1 | span 2 | Narrow column, tall — runs deep |
+| advertisement | span 1 | span 1 | Square block via `aspect-ratio: 1` |
 
 ```css
-[data-newspaper="pryce-of-progress"] .story--tertiary:nth-of-type(3) {
-  grid-column: span 2;
+[data-newspaper="pryce-of-progress"] {
+  --grid-row-unit: 200px;
+
+  .story--major         { grid-column: span 4; }
+  .story--secondary     { grid-column: span 2; }
+  .story--tertiary      { grid-column: span 1; grid-row: span 2; }
+  .story--advertisement { grid-column: span 1; aspect-ratio: 1; }
 }
 ```
+
+With major spanning full width, row 1 is clean. Secondaries (span 2) pair up in row 2. Tertiaries and ads flow into rows 3+, with tertiaries spanning 2 row units for height and ads locking to a square. Empty slots leave no gaps — unrendered stories simply don't occupy grid space.
 
 ### Story Ordering
 
@@ -194,13 +206,9 @@ scope :advertisement,  -> { where(story_type: :advertisement) }
 
 ### Detection
 
-A Stimulus controller (`story_controller.js`) on each story slot checks `scrollHeight > clientHeight` after render. If overflowing, it reveals a "Continued on page X" link at the bottom. The page number is a static cosmetic value — there are no actual inside pages in the data model. Each story type maps to a fixed display number (major → 2, secondary → 3, tertiary → 4). This can be a data attribute on the slot element set by the Rails partial. Each slot uses `overflow: hidden` with a type-specific `max-height`:
+A Stimulus controller (`story_controller.js`) on each story slot checks `scrollHeight > clientHeight` after render. If overflowing, it reveals a "Continued on page X" link at the bottom. The page number is a static cosmetic value — there are no actual inside pages in the data model. Each story type maps to a fixed display number (major → 2, secondary → 3, tertiary → 4). This can be a data attribute on the slot element set by the Rails partial.
 
-```css
-.story--major     { max-height: 24rem; }
-.story--secondary { max-height: 18rem; }
-.story--tertiary  { max-height: 12rem; }
-```
+Story slot height is controlled by the grid (`--grid-row-unit` and `grid-row: span N`), not by `max-height`. All slots use `overflow: hidden` — the grid cell itself acts as the clipping boundary.
 
 ### Turbo Frame Overlay
 
