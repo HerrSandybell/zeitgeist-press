@@ -9,3 +9,5 @@
 @import "base/typography.css";
 @import "themes/pryce_of_progress.css";
 @import "themes/broadsheet.css";
+@import "components/masthead.css";
+@import "components/navbar.css";

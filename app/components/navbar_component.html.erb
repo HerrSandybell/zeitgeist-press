@@ -1,0 +1,11 @@
+<nav class="site-navbar">
+  <span class="site-navbar__name">Zeitgeist Press</span>
+  <%= form_with url: theme_path, method: :patch,
+        data: { controller: "theme-switcher", action: "change->theme-switcher#change" } do %>
+    <%= render SelectMenuComponent.new(
+          options: theme_options,
+          selected: @current_theme,
+          name: "theme"
+        ) %>
+  <% end %>
+</nav>
