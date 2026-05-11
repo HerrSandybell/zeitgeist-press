@@ -30,6 +30,7 @@
 
 [data-newspaper="pryce-of-progress"] .story--major .story-body {
   column-count: 3;
+  column-fill: auto;
   column-gap: var(--column-gap);
   column-rule: var(--rule-width) solid var(--color-rule);
 }
@@ -40,6 +41,7 @@
 
 [data-newspaper="pryce-of-progress"] .story--secondary .story-body {
   column-count: 2;
+  column-fill: auto;
   column-gap: var(--column-gap);
   column-rule: var(--rule-width) solid var(--color-rule);
 }

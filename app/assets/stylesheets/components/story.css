@@ -8,6 +8,13 @@
   border-top: var(--rule-width) solid var(--color-rule);
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.story-body {
+  flex: 1;
+  min-height: 0;
 }
 
 .story-subtitle {
