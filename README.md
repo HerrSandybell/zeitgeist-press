@@ -4,7 +4,7 @@ A newspaper front page archive for a gaslight-era tabletop RPG campaign — and 
 
 ## What it is
 
-Zeitgeist Press publishes fictional newspaper editions from the world of the [Zeitgeist TTRPG](https://www.rpgpublisher.com/). Each edition displays a front page laid out in a CSS grid, with stories slotted by type (major headline, secondary, tertiary, advertisement). Stories that overflow their cell reveal a "Continued on page #" link; clicking it opens the full story in an overlay styled as a newspaper cutout.
+Zeitgeist Press publishes fictional newspaper editions from the world of the Zeitgeist. Each edition displays a front page laid out in a CSS grid, with stories slotted by type (major headline, secondary, tertiary, advertisement). Stories that overflow their cell reveal a "Continued on page #" link; clicking it opens the full story in an overlay styled as a newspaper cutout.
 
 The project is also a deliberate showcase of the following technologies working together:
 
