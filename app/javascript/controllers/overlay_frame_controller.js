@@ -17,7 +17,8 @@ export default class extends Controller {
     this.closeOnEscape = this.closeOnEscape.bind(this)
   }
 
-  show() {
+  show(event) {
+    if (event.target.id !== "story-overlay") return
     this.element.classList.add("overlay-frame--open")
     document.addEventListener("keydown", this.closeOnEscape)
   }
