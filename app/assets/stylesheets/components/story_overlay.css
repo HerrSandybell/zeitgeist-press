@@ -78,9 +78,7 @@
   overflow: visible;
 }
 
-[data-newspaper].story-cutout .story--major .story-body,
-[data-newspaper].story-cutout .story--secondary .story-body,
-[data-newspaper].story-cutout .story--tertiary .story-body {
+[data-newspaper].story-cutout .story .story-body {
   column-count: 3;
   column-gap: var(--column-gap);
   column-rule: var(--rule-width) solid var(--color-rule);
