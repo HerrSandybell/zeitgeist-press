@@ -138,11 +138,13 @@ The base grid container — column count and row unit are overridden per theme:
 .front-page-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-auto-flow: row;
+  grid-auto-flow: row dense;
   grid-auto-rows: var(--grid-row-unit, auto);
   gap: var(--column-gap);
 }
 ```
+
+`grid-auto-flow: row dense` enables "tetris-like" packing — the grid looks for the earliest empty cell that fits each item and places it there. This handles variable story counts gracefully: leftover cells under a wide story get filled by smaller stories that come later in the source order. The trade-off is that visual order may differ from DOM order. For an amateur publication like Pryce of Progress, this is acceptable and thematic.
 
 `--grid-row-unit` is a theme-level token. Setting it to a fixed value (e.g. `200px`) gives tertiary and advertisement consistent, relatable heights. Without it, row heights are content-driven.
 
@@ -168,7 +170,7 @@ Defined in `themes/pryce_of_progress.css`. Each story type has a distinct visual
 }
 ```
 
-With major spanning full width, row 1 is clean. Secondaries (span 2) pair up in row 2. Tertiaries and ads flow into rows 3+, with tertiaries spanning 2 row units for height and ads locking to a square. Empty slots leave no gaps — unrendered stories simply don't occupy grid space.
+Story counts are not fixed. Each edition has at least one major story and a variable mix of the rest. Dense packing handles whatever shows up — wide stories take the top, narrower stories fill the remaining cells in any order that fits.
 
 ### Story Ordering
 
@@ -228,7 +230,7 @@ Alpine.js manages open/close state. When the frame loads, Alpine activates the b
 
 ### Story Clipping Partial
 
-`_story_clipping.html.erb` renders the full story body styled as a torn newspaper cutout — aged paper background, drop shadow, ragged edges via CSS `clip-path`. Rendered inside the Turbo Frame.
+`_story_clipping.html.erb` renders the full story body styled as a paper cutout — aged paper background, prominent drop shadow, slight rotation. Rendered inside the Turbo Frame. Torn-edge effects (CSS `clip-path` or SVG masks) are deferred — V1 uses simple shadow and rotation.
 
 ### New Route
 
@@ -245,6 +247,27 @@ A `StoriesController#show` action fetches the story and renders a view that wrap
 ## Out of Scope
 
 - News stand index (stacked card UI) — separate spec
+- Newspapers index page styling — handled in a later phase
 - Multiple simultaneous overlays
 - Story editing or creation in this view
 - Mobile responsive layout
+- Torn-edge clipping effects (deferred to V2)
+- Test strategy (deferred)
+
+## Phasing
+
+This spec implements in three phases. Each phase ends in something visible and verifiable.
+
+### Phase 3a — Design System Foundation
+
+The contract. Tokens, typography, theme file structure, `Newspaper#slug`, body data attribute. After this phase, the existing edition show page renders in Pryce of Progress colors and fonts — no layout changes yet, but the theming is alive. Adding a future newspaper means one new file.
+
+### Phase 3b — Edition Front Page Layout
+
+The reading experience. Grid container, story spans per theme, masthead, attention bar, story partial, controller ordering by type, Story scopes. After this phase, the edition show page renders as a real newspaper front page with stories slotted by type. Validates the dense-packing layout against real story counts.
+
+### Phase 3c — Overflow & Clipping Overlay
+
+The interactive piece. Stimulus overflow detection, "Continued on page X" link, `StoriesController#show`, nested route, Turbo Frame in layout, Alpine.js overlay state, story clipping component. After this phase, overflowing stories show the continued link and clicking opens the overlay clipping.
+
+Phase B will likely surface adjustments needed for Phase C (e.g. how `overflow: hidden` interacts with grid-controlled height). Phase B may also reshape some assumptions in this spec once the layout meets real data.
