@@ -1,12 +1,21 @@
 newspaper = Newspaper.find_or_create_by!(name: "Pryce of Progress")
+newspaper.update!(
+  tagline:        "What the Tribune Will Not Tell You — Twice a Week, Sometimes Thrice",
+  print_location: "Printed in Bosum Strand"
+)
 
 edition = newspaper.editions.find_or_create_by!(volume: 2, issue_number: 98) do |e|
-  e.year           = 501
-  e.season         = :spring
-  e.day            = 10
-  e.attention_bar  = "♦ The Workingman's Friend · Truth in Spite of Power · What the Tribune Won't Tell You ♦"
-  e.published      = true
+  e.year          = 501
+  e.season        = :spring
+  e.day           = 10
+  e.attention_bar = "♦ The Workingman's Friend · Truth in Spite of Power · What the Tribune Won't Tell You ♦"
+  e.published     = true
 end
+edition.update!(
+  edition_type: "Extra Edition",
+  price:        "Two Pennies",
+  city:         "Flint"
+)
 
 stories = [
   {
