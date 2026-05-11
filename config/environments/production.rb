@@ -81,6 +81,6 @@ Rails.application.configure do
   config.active_record.attributes_for_inspect = [ :id ]
 
   # Enable DNS rebinding protection and other `Host` header attacks.
-  config.hosts = [ENV.fetch("APPLICATION_HOST")]
+  config.hosts = [ ENV.fetch("APPLICATION_HOST", "localhost") ]
   config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 end
