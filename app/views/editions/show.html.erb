@@ -1,6 +1,9 @@
-<h1><%= @edition.newspaper.name %></h1>
-<h2><%= @edition.label %> </h2>
-<% @stories.each do |story| %>
-  <h3><%= story.headline %></h3>
-  <p><%= story.body %></p>
-<% end %>
+<div class="newspaper-page">
+  <%= render "masthead", edition: @edition %>
+
+  <div class="front-page-grid">
+    <% @stories.each do |story| %>
+      <%= render StoryComponent.new(story: story) %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<%# locals: (edition:) %>
+<header class="masthead">
+  <h1 class="masthead-title"><%= edition.newspaper.name %></h1>
+  <p class="masthead-subtitle"><%= edition.label %> · Vol. <%= edition.volume %>, No. <%= edition.issue_number %></p>
+
+  <% if edition.attention_bar.present? %>
+    <p class="attention-bar"><%= edition.attention_bar %></p>
+  <% end %>
+</header>

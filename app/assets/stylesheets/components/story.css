@@ -1,0 +1,65 @@
+/*
+ * Story component — wrappers and field-level type for the _story partial.
+ * Per-newspaper themes override .story--<type> column/row spans.
+ */
+
+.story {
+  padding: 1rem;
+  border-top: var(--rule-width) solid var(--color-rule);
+}
+
+.story-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--color-ink-muted);
+  margin: 0 0 0.75em;
+}
+
+.story-ticker {
+  font-family: var(--font-headline);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent);
+  margin: 0 0 0.75em;
+}
+
+.story-quote {
+  font-family: var(--font-headline);
+  font-size: 1.25rem;
+  font-style: italic;
+  border-left: calc(var(--rule-width) * 3) solid var(--color-accent);
+  padding-left: 1rem;
+  margin: 1em 0;
+  color: var(--color-ink);
+}
+
+.story-quote cite {
+  display: block;
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 0.875rem;
+  color: var(--color-ink-muted);
+  margin-top: 0.5em;
+  letter-spacing: 0.05em;
+}
+
+.headline--advertisement {
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.story--advertisement {
+  text-align: center;
+  overflow: hidden;
+  border: var(--rule-width) solid var(--color-rule);
+  background-color: color-mix(in srgb, var(--color-paper) 92%, var(--color-ink) 8%);
+}
+
+.story--advertisement .story-body {
+  text-align: center;
+  font-size: 0.875rem;
+}

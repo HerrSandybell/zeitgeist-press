@@ -16,3 +16,50 @@ orphan:
   story_type: major
   headline: An Orphaned Story
   body: This story has no edition yet.
+
+tertiary_one:
+  edition: one
+  story_type: tertiary
+  headline: A Tertiary Item
+  body: The full text of a tertiary story.
+
+ad_one:
+  edition: one
+  story_type: advertisement
+  position: 1
+  headline: Wares For Sale
+  body: One slightly used cabinet, no questions.
+
+ad_two:
+  edition: one
+  story_type: advertisement
+  position: 2
+  headline: Steam-Press For Sale
+  body: One rotary steam-press, lightly used.
+
+ad_three:
+  edition: one
+  story_type: advertisement
+  position: 3
+  headline: Language Tutor Available
+  body: Classical Elvish and Introductory Draconic.
+
+ad_four:
+  edition: one
+  story_type: advertisement
+  position: 4
+  headline: Lost Dog
+  body: Brown terrier, answers to Sergeant.
+
+ad_five:
+  edition: one
+  story_type: advertisement
+  position: 5
+  headline: Rooms To Let
+  body: Handsome furnished rooms, ground floor.
+
+secondary_one:
+  edition: one
+  story_type: secondary
+  headline: Inside Edition One
+  body: Secondary story for edition one.

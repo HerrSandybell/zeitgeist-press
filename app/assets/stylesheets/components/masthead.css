@@ -1,0 +1,20 @@
+/*
+ * Masthead component — the newspaper's page header.
+ * Type rules for .masthead-title and .attention-bar live in base/typography.css.
+ * This file adds spacing and the subtitle treatment.
+ */
+
+.masthead {
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+  border-bottom: calc(var(--rule-width) * 3) double var(--color-rule);
+  margin-bottom: 1.5rem;
+}
+
+.masthead-subtitle {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--color-ink-muted);
+  margin: 0 0 1rem;
+}

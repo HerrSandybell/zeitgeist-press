@@ -37,4 +37,24 @@ class StoryTest < ActiveSupport::TestCase
     assert_not story.valid?
     assert_includes story.errors[:body], "can't be blank"
   end
+
+  test "major scope returns only major stories" do
+    assert_equal Story.where(story_type: :major).sort, Story.major.sort
+    assert Story.major.all? { |s| s.major? }
+  end
+
+  test "secondary scope returns only secondary stories" do
+    assert_equal Story.where(story_type: :secondary).sort, Story.secondary.sort
+    assert Story.secondary.all? { |s| s.secondary? }
+  end
+
+  test "tertiary scope returns only tertiary stories" do
+    assert_equal Story.where(story_type: :tertiary).sort, Story.tertiary.sort
+    assert Story.tertiary.all? { |s| s.tertiary? }
+  end
+
+  test "advertisement scope returns only advertisement stories" do
+    assert_equal Story.where(story_type: :advertisement).sort, Story.advertisement.sort
+    assert Story.advertisement.all? { |s| s.advertisement? }
+  end
 end
