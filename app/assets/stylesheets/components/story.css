@@ -16,6 +16,8 @@
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  orphans: 1;
+  widows: 1;
 }
 
 .story-body blockquote {
