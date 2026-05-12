@@ -71,3 +71,13 @@ a {
   color: var(--color-ink-muted);
   font-size: 0.875rem;
 }
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: 0;
+  }
+
+  .masthead-title {
+    white-space: normal;
+  }
+}

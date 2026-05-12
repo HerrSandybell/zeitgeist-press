@@ -12,3 +12,10 @@
     0 2px 8px rgba(0, 0, 0, 0.30),
     0 8px 32px rgba(0, 0, 0, 0.20);
 }
+
+@media (max-width: 768px) {
+  .newspaper-page {
+    max-width: 100%;
+    box-shadow: none;
+  }
+}

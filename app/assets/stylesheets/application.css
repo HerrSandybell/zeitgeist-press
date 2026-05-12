@@ -14,4 +14,6 @@
 @import "themes/pryce_of_progress.css";
 @import "components/masthead.css";
 @import "components/navbar.css";
+@import "components/story.css";
+@import "components/story_overlay.css";
 @import "components/footer.css";
