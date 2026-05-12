@@ -90,7 +90,7 @@ class MobileLayoutTest < ApplicationSystemTestCase
     assert_selector ".overlay-frame--open", wait: 5
 
     col_count = page.evaluate_script(
-      "window.getComputedStyle(document.querySelector('[data-newspaper] .story-cutout .story .story-body')).columnCount"
+      "window.getComputedStyle(document.querySelector('[data-newspaper].story-cutout .story .story-body')).columnCount"
     )
     assert_equal "1", col_count
   end
@@ -107,5 +107,13 @@ class MobileLayoutTest < ApplicationSystemTestCase
       "window.getComputedStyle(document.querySelector('.masthead-title')).whiteSpace"
     )
     assert_equal "normal", white_space
+  end
+
+  test "major story body is single-column on mobile" do
+    major = stories(:long_major)
+    col_count = page.evaluate_script(
+      "window.getComputedStyle(document.querySelector('article[data-story-id=\"#{major.id}\"] .story-body')).columnCount"
+    )
+    assert_equal "1", col_count
   end
 end
