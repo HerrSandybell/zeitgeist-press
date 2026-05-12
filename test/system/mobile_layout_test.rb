@@ -29,4 +29,15 @@ class MobileLayoutTest < ApplicationSystemTestCase
     )
     assert_equal "0px", padding
   end
+
+  test "story grid is a flex column on mobile" do
+    display = page.evaluate_script(
+      "window.getComputedStyle(document.querySelector('.front-page-grid')).display"
+    )
+    flex_direction = page.evaluate_script(
+      "window.getComputedStyle(document.querySelector('.front-page-grid')).flexDirection"
+    )
+    assert_equal "flex", display
+    assert_equal "column", flex_direction
+  end
 end

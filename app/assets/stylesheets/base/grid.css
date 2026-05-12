@@ -18,3 +18,10 @@
   padding-top: var(--space-4);
   margin-top: calc(-1 * var(--space-4));
 }
+
+@media (max-width: 768px) {
+  .front-page-grid {
+    display: flex;
+    flex-direction: column;
+  }
+}
