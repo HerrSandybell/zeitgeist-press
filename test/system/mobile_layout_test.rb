@@ -94,4 +94,18 @@ class MobileLayoutTest < ApplicationSystemTestCase
     )
     assert_equal "1", col_count
   end
+
+  test "masthead info bar stacks in a single column on mobile" do
+    col_count = page.evaluate_script(
+      "window.getComputedStyle(document.querySelector('.masthead-info')).gridTemplateColumns.split(' ').length"
+    )
+    assert_equal 1, col_count
+  end
+
+  test "masthead title wraps rather than overflowing on mobile" do
+    white_space = page.evaluate_script(
+      "window.getComputedStyle(document.querySelector('.masthead-title')).whiteSpace"
+    )
+    assert_equal "normal", white_space
+  end
 end

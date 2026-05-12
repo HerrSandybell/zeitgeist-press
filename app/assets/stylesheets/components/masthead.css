@@ -56,6 +56,18 @@
 .masthead-info__date     { text-align: center; }
 .masthead-info__location { text-align: right; }
 
+@media (max-width: 768px) {
+  .masthead-info {
+    grid-template-columns: 1fr;
+  }
+
+  .masthead-info__vol,
+  .masthead-info__date,
+  .masthead-info__location {
+    text-align: center;
+  }
+}
+
 .attention-bar {
   font-family: var(--font-body);
   font-weight: bold;
