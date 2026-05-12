@@ -1,4 +1,4 @@
 .site-footer {
   border-top: var(--rule-width) solid var(--color-rule);
-  margin-top: 2rem;
+  margin-top: var(--space-8);
 }
