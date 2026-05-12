@@ -40,4 +40,29 @@ class MobileLayoutTest < ApplicationSystemTestCase
     assert_equal "flex", display
     assert_equal "column", flex_direction
   end
+
+  test "story cards are capped at 20rem on mobile" do
+    max_height = page.evaluate_script(
+      "window.getComputedStyle(document.querySelector('.story')).maxHeight"
+    )
+    # 20rem = 320px at the default 16px root font size
+    assert_equal "320px", max_height
+  end
+
+  test "long story shows the continued link on mobile" do
+    long = stories(:long_major)
+    assert_selector "article[data-story-id='#{long.id}'] a.story-continued-link",
+                    visible: true, wait: 5
+  end
+
+  test "short story does not show the continued link on mobile" do
+    short = stories(:tertiary_one)
+    long  = stories(:long_major)
+    # Wait for overflow detection to complete on the long story first
+    assert_selector "article[data-story-id='#{long.id}'] a.story-continued-link",
+                    visible: true, wait: 5
+    within "article[data-story-id='#{short.id}']" do
+      assert_no_selector "a.story-continued-link", visible: true
+    end
+  end
 end

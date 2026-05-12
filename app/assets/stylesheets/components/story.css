@@ -106,3 +106,16 @@
 .story-continued-link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .story {
+    max-height: 20rem;
+  }
+
+  /* Reset multi-column text laid out by theme rules.
+   * Selectors match theme specificity [0,3,0]; story.css loads after themes. */
+  [data-newspaper] .story--major .story-body,
+  [data-newspaper] .story--secondary .story-body {
+    column-count: 1;
+  }
+}
