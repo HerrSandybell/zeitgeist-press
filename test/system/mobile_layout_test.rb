@@ -65,4 +65,33 @@ class MobileLayoutTest < ApplicationSystemTestCase
       assert_no_selector "a.story-continued-link", visible: true
     end
   end
+
+  test "story overlay cutout has no rotation on mobile" do
+    long = stories(:long_major)
+    within "article[data-story-id='#{long.id}']" do
+      assert_selector "a.story-continued-link", visible: true, wait: 5
+      find("a.story-continued-link").click
+    end
+    assert_selector ".overlay-frame--open", wait: 5
+
+    transform = page.evaluate_script(
+      "window.getComputedStyle(document.querySelector('article.story-cutout')).transform"
+    )
+    # CSS 'transform: none' computes to 'none' or the identity matrix
+    assert_includes ["none", "matrix(1, 0, 0, 1, 0, 0)"], transform
+  end
+
+  test "story overlay cutout body is single-column on mobile" do
+    long = stories(:long_major)
+    within "article[data-story-id='#{long.id}']" do
+      assert_selector "a.story-continued-link", visible: true, wait: 5
+      find("a.story-continued-link").click
+    end
+    assert_selector ".overlay-frame--open", wait: 5
+
+    col_count = page.evaluate_script(
+      "window.getComputedStyle(document.querySelector('[data-newspaper] .story-cutout .story .story-body')).columnCount"
+    )
+    assert_equal "1", col_count
+  end
 end
