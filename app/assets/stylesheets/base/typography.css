@@ -15,7 +15,7 @@ body {
 }
 
 .page-content {
-  padding: 2rem 1rem;
+  padding: var(--space-8) var(--space-4);
 }
 
 h1, h2, h3, h4, h5, h6 {
