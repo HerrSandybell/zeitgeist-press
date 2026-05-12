@@ -25,7 +25,7 @@
   --page-width:       1200px;
   --color-background: #d0d0d0;
 
-  /* Spacing — 0.25rem grid (Tailwind-style numeric scale) */
+  /* Spacing — 0.25rem grid (Tailwind-style numeric scale; steps 5 and 7 omitted — no usage in codebase) */
   --space-1:          0.25rem;   /*  4px */
   --space-2:          0.5rem;    /*  8px */
   --space-3:          0.75rem;   /* 12px */
