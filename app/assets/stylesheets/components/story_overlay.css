@@ -107,6 +107,12 @@
     transform: none;
   }
 
+  /* The mobile .story max-height cap must not apply inside the cutout —
+   * the overlay is meant to show the full story without truncation. */
+  .story-cutout .story {
+    max-height: none;
+  }
+
   /* Same specificity as the desktop rule above; wins by source order. */
   [data-newspaper].story-cutout .story .story-body {
     column-count: 1;

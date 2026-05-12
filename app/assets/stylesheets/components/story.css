@@ -109,13 +109,15 @@
 
 @media (max-width: 768px) {
   .story {
-    max-height: 20rem;
+    max-height: 28rem;
   }
 
   /* Reset multi-column text laid out by theme rules.
-   * Selectors match theme specificity [0,3,0]; story.css loads after themes. */
+   * !important needed: column-fill:auto in the theme causes text to fill a
+   * narrow column-1 then overflow into hidden column-2 at the constrained
+   * max-height, making body text appear in a half-width column on mobile. */
   [data-newspaper] .story--major .story-body,
   [data-newspaper] .story--secondary .story-body {
-    column-count: 1;
+    column-count: 1 !important;
   }
 }

@@ -41,12 +41,12 @@ class MobileLayoutTest < ApplicationSystemTestCase
     assert_equal "column", flex_direction
   end
 
-  test "story cards are capped at 20rem on mobile" do
+  test "story cards are capped at 28rem on mobile" do
     max_height = page.evaluate_script(
       "window.getComputedStyle(document.querySelector('.story')).maxHeight"
     )
-    # 20rem = 320px at the default 16px root font size
-    assert_equal "320px", max_height
+    # 28rem = 448px at the default 16px root font size
+    assert_equal "448px", max_height
   end
 
   test "long story shows the continued link on mobile" do
