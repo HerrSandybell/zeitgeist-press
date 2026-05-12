@@ -4,7 +4,7 @@
  */
 
 .story {
-  padding: 1rem 1rem 2rem;
+  padding: var(--space-4) var(--space-4) var(--space-8);
   border-top: var(--rule-width) solid var(--color-rule);
   position: relative;
   overflow: hidden;
@@ -46,7 +46,7 @@
   font-size: 1.25rem;
   font-style: italic;
   border-left: calc(var(--rule-width) * 3) solid var(--color-accent);
-  padding-left: 1rem;
+  padding-left: var(--space-4);
   margin: 1em 0;
   color: var(--color-ink);
 }
@@ -93,8 +93,8 @@
 
 .story-continued-link {
   position: absolute;
-  bottom: 0.5rem;
-  right: 0.75rem;
+  bottom: var(--space-2);
+  right: var(--space-3);
   font-family: var(--font-body);
   font-style: italic;
   font-size: 0.85rem;
