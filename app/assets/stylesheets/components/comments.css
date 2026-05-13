@@ -1,7 +1,3 @@
-:root {
-  --color-error: #c0392b;
-}
-
 /* ── Comment section wrapper ── */
 .comment-section {
   max-width: 56rem;

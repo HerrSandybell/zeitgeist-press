@@ -11,6 +11,7 @@
   --color-ink-muted:  #555555;
   --color-rule:       #000000;
   --color-accent:     #000000;
+  --color-error:      #c0392b;
 
   /* Typography */
   --font-masthead:    serif;
