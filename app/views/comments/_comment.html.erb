@@ -1,0 +1,10 @@
+<div class="comment-bubble" data-character-id="<%= comment.character_id %>">
+  <div class="comment-bubble__avatar">
+    <%= comment.character.emoji %>
+  </div>
+  <div class="comment-bubble__body">
+    <div class="comment-bubble__name"><%= comment.character.name %></div>
+    <div class="comment-bubble__text"><%= comment.body %></div>
+    <div class="comment-bubble__time"><%= time_ago_in_words(comment.created_at) %> ago</div>
+  </div>
+</div>

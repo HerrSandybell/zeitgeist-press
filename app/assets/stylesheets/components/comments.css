@@ -1,0 +1,190 @@
+/* ── Comment section wrapper ── */
+.comment-section {
+  max-width: 56rem;
+  margin: var(--space-8) auto;
+  padding: 0 var(--space-4);
+  border-top: calc(var(--rule-width) * 3) double var(--color-rule);
+  padding-top: var(--space-6);
+}
+
+.comment-section__heading {
+  font-family: var(--font-headline);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-ink-muted);
+  margin: 0 0 var(--space-6);
+}
+
+/* ── Comment thread ── */
+.comment-thread {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+/* ── Individual bubble ── */
+.comment-bubble {
+  display: flex;
+  gap: var(--space-3);
+  align-items: flex-end;
+  max-width: 72%;
+}
+
+.bubble--mine {
+  flex-direction: row-reverse;
+  align-self: flex-end;
+}
+
+.comment-bubble__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  min-width: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-ink);
+  border: 2px solid var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.comment-bubble__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.comment-bubble__name {
+  font-family: var(--font-headline);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-muted);
+}
+
+.bubble--mine .comment-bubble__name {
+  text-align: right;
+}
+
+.comment-bubble__text {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border: 2px solid var(--color-accent);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  position: relative;
+}
+
+/* Left tail */
+.comment-bubble__text::before {
+  content: "";
+  position: absolute;
+  bottom: 0.6rem;
+  left: -0.55rem;
+  border: 0.28rem solid transparent;
+  border-right-color: var(--color-accent);
+}
+
+/* Right tail for .bubble--mine */
+.bubble--mine .comment-bubble__text::before {
+  left: auto;
+  right: -0.55rem;
+  border-right-color: transparent;
+  border-left-color: var(--color-accent);
+}
+
+.comment-bubble__time {
+  font-size: 0.625rem;
+  color: var(--color-ink-muted);
+  font-family: var(--font-headline);
+  letter-spacing: 0.05em;
+}
+
+.bubble--mine .comment-bubble__time {
+  text-align: right;
+}
+
+/* ── Comment form ── */
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  border-top: var(--rule-width) solid var(--color-rule);
+  padding-top: var(--space-4);
+}
+
+.comment-character-select {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border: 2px solid var(--color-accent);
+  font-family: var(--font-headline);
+  font-size: 0.875rem;
+  padding: var(--space-2) var(--space-3);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c8a96e'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  cursor: pointer;
+  width: 100%;
+  max-width: 22rem;
+}
+
+.comment-body-field {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border: 2px solid var(--color-accent);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  padding: var(--space-2) var(--space-3);
+  resize: vertical;
+  min-height: 5rem;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 44rem;
+}
+
+.comment-body-field::placeholder {
+  color: var(--color-ink-muted);
+  font-style: italic;
+}
+
+.comment-submit {
+  background: var(--color-accent);
+  color: var(--color-ink);
+  border: none;
+  font-family: var(--font-headline);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.comment-submit:hover {
+  opacity: 0.85;
+}
+
+.comment-errors {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: #c0392b;
+  font-style: italic;
+  min-height: 1.25rem;
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .comment-bubble {
+    max-width: 90%;
+  }
+
+  .comment-character-select,
+  .comment-body-field {
+    max-width: 100%;
+  }
+}
