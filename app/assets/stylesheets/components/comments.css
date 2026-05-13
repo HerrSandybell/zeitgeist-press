@@ -1,3 +1,7 @@
+:root {
+  --color-error: #c0392b;
+}
+
 /* ── Comment section wrapper ── */
 .comment-section {
   max-width: 56rem;
@@ -172,7 +176,7 @@
 .comment-errors {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  color: #c0392b;
+  color: var(--color-error);
   font-style: italic;
   min-height: 1.25rem;
 }
