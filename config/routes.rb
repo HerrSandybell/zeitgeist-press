@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   resources :newspapers, only: [] do
-    resources :editions, only: [:show]
+    resources :editions, only: [:show] do
+      resources :comments, only: [:create]
+    end
   end
 
   resources :stories, only: [] do
