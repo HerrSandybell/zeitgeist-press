@@ -143,13 +143,38 @@ end
 puts "Seeded: #{newspaper.name} — Vol. #{edition.volume}, No. #{edition.issue_number} (#{edition.stories.count} stories)"
 
 [
-  { name: "Constable Harrow",    emoji: "🕵️" },
-  { name: "Lady Ysabette",       emoji: "🧙" },
-  { name: "Engineer Volta",      emoji: "⚙️" },
-  { name: "Captain Rutger",      emoji: "🗡️" },
-  { name: "The Archivist",       emoji: "📜" },
-  { name: "Bartholomew Pryce",   emoji: "🎩" }
+  { name: "Thames Grimsley",    emoji: "⚓" },
+  { name: "Rock Rackus",        emoji: "🎸" },
+  { name: "Barb",               emoji: "🍺" },
+  { name: "Bartholomew Pryce",  emoji: "🗞️" },
+  { name: "Morgan Cippiano",    emoji: "🌹" },
+  { name: "Windfall",           emoji: "🌬️" },
+  { name: "Marta Sholt",        emoji: "🏭" },
+  { name: "Oswin Crabbe",       emoji: "🧹" },
+  { name: "Elspeth Vane",       emoji: "🧤" },
+  { name: "Donat Fisk",         emoji: "⚙️" },
+  { name: "Pell",               emoji: "🐟" },
+  { name: "Sister Alaine",      emoji: "✝️" },
+  { name: "Kvarti Gorbatiy",    emoji: "🪨" }
 ].each do |attrs|
   character = Character.find_or_initialize_by(name: attrs[:name])
   character.update!(attrs)
 end
+
+puts "Seeded: #{Character.count} characters"
+
+[
+  { character: "Bartholomew Pryce", body: "Our finest issue yet. I stand by every word. The headline alone is worth the halfpenny." },
+  { character: "Marta Sholt",       body: "Pardwight got bombed. The Tribune building's gone. Somehow the people who got killed are still just workers and constables. Funny how that works out." },
+  { character: "Barb",              body: "Three men came in last night saying they'd outrun a Kell carriage. Ordered doubles. I didn't ask questions. That's my policy." },
+  { character: "Thames Grimsley",   body: "Our people were on that skywalk. Our people are always the ones on the skywalk. I want names. Not of the bombers. Of whoever decided that tunnel got defunded last winter." },
+  { character: "Oswin Crabbe",      body: "Mr Pryce gave me six of these to hand out round the Nettles. I read the bit about the carriage. That sounds well fast actually." },
+  { character: "Morgan Cippiano",   body: "A difficult day for law enforcement. One hopes the city recovers its composure quickly. Disorder is bad for everyone." }
+].each do |attrs|
+  character = Character.find_by!(name: attrs[:character])
+  Comment.find_or_create_by!(edition: edition, character: character) do |c|
+    c.body = attrs[:body]
+  end
+end
+
+puts "Seeded: #{edition.comments.count} comments"
