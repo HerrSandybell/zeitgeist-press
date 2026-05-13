@@ -32,11 +32,6 @@
   max-width: 72%;
 }
 
-.bubble--mine {
-  flex-direction: row-reverse;
-  align-self: flex-end;
-}
-
 .comment-bubble__avatar {
   width: 2.5rem;
   height: 2.5rem;
@@ -64,10 +59,6 @@
   color: var(--color-ink-muted);
 }
 
-.bubble--mine .comment-bubble__name {
-  text-align: right;
-}
-
 .comment-bubble__text {
   background: var(--color-ink);
   color: var(--color-paper);
@@ -89,23 +80,11 @@
   border-right-color: var(--color-accent);
 }
 
-/* Right tail for .bubble--mine */
-.bubble--mine .comment-bubble__text::before {
-  left: auto;
-  right: -0.55rem;
-  border-right-color: transparent;
-  border-left-color: var(--color-accent);
-}
-
 .comment-bubble__time {
   font-size: 0.625rem;
   color: var(--color-ink-muted);
   font-family: var(--font-headline);
   letter-spacing: 0.05em;
-}
-
-.bubble--mine .comment-bubble__time {
-  text-align: right;
 }
 
 /* ── Comment form ── */
