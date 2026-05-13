@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_13_190423) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_13_192557) do
   create_table "characters", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "emoji", null: false
     t.string "name", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body", null: false
+    t.integer "character_id", null: false
+    t.datetime "created_at", null: false
+    t.integer "edition_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_comments_on_character_id"
+    t.index ["edition_id"], name: "index_comments_on_edition_id"
   end
 
   create_table "editions", force: :cascade do |t|
@@ -60,6 +70,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_05_13_190423) do
     t.index ["edition_id"], name: "index_stories_on_edition_id"
   end
 
+  add_foreign_key "comments", "characters"
+  add_foreign_key "comments", "editions"
   add_foreign_key "editions", "newspapers"
   add_foreign_key "stories", "editions"
 end
