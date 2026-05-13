@@ -2,11 +2,13 @@ class EditionsController < ApplicationController
   def show
     @edition = Edition.includes(:newspaper).find(params[:id])
     load_stories
+    @characters = Character.order(:name)
   end
 
   def show_current
     @edition = Edition.includes(:newspaper).where(published: true).order(:id).first!
     load_stories
+    @characters = Character.order(:name)
     render :show
   end
 
