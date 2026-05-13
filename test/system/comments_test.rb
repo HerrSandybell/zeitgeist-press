@@ -30,12 +30,13 @@ class CommentsTest < ApplicationSystemTestCase
   end
 
   test "submitting with an empty body shows a validation error" do
+    initial_count = all(".comment-bubble").count
     select "#{characters(:harrow).emoji} #{characters(:harrow).name}",
            from: "comment[character_id]"
     click_button "Post Comment"
 
     assert_selector "#comment-errors", text: /can't be blank/i, wait: 5
-    assert_no_selector ".comment-bubble .comment-bubble__text", exact_text: ""
+    assert_equal initial_count, all(".comment-bubble").count
   end
 
   test "new comment is broadcast to a second browser session" do
