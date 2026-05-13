@@ -141,3 +141,15 @@ stories.each do |attrs|
 end
 
 puts "Seeded: #{newspaper.name} — Vol. #{edition.volume}, No. #{edition.issue_number} (#{edition.stories.count} stories)"
+
+[
+  { name: "Constable Harrow",    emoji: "🕵️" },
+  { name: "Lady Ysabette",       emoji: "🧙" },
+  { name: "Engineer Volta",      emoji: "⚙️" },
+  { name: "Captain Rutger",      emoji: "🗡️" },
+  { name: "The Archivist",       emoji: "📜" },
+  { name: "Bartholomew Pryce",   emoji: "🎩" }
+].each do |attrs|
+  character = Character.find_or_initialize_by(name: attrs[:name])
+  character.update!(attrs)
+end

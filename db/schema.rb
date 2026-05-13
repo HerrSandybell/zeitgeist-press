@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_11_195908) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_13_190423) do
+  create_table "characters", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "emoji", null: false
+    t.string "name", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "editions", force: :cascade do |t|
     t.string "attention_bar"
     t.string "city"
