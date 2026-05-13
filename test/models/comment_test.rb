@@ -26,21 +26,21 @@ class CommentTest < ActiveSupport::TestCase
     assert_not comment.valid?
   end
 
-  test "invalid when body exceeds 500 characters" do
+  test "invalid when body exceeds 280 characters" do
     comment = Comment.new(
       edition:   editions(:one),
       character: characters(:harrow),
-      body:      "x" * 501
+      body:      "x" * 281
     )
     assert_not comment.valid?
-    assert_includes comment.errors[:body], "is too long (maximum is 500 characters)"
+    assert_includes comment.errors[:body], "is too long (maximum is 280 characters)"
   end
 
-  test "valid when body is exactly 500 characters" do
+  test "valid when body is exactly 280 characters" do
     comment = Comment.new(
       edition:   editions(:one),
       character: characters(:harrow),
-      body:      "x" * 500
+      body:      "x" * 280
     )
     assert comment.valid?
   end

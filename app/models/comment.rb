@@ -2,7 +2,7 @@ class Comment < ApplicationRecord
   belongs_to :edition
   belongs_to :character
 
-  validates :body, presence: true, length: { maximum: 500 }
+  validates :body, presence: true, length: { maximum: 280 }
 
   after_create_commit -> {
     broadcast_append_to [edition, :comments],

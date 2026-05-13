@@ -2,6 +2,7 @@
   <textarea name="comment[body]"
             id="comment_body"
             placeholder="What do you make of this edition…"
-            class="comment-body-field"></textarea>
+            class="comment-body-field"
+            maxlength="280"></textarea>
 <% end %>
 <%= turbo_stream.update "comment-errors" do %><% end %>
